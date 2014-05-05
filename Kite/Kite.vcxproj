@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A909AB95-6692-401D-A1AB-A27D054E1046}</ProjectGuid>
+    <ProjectGuid>{D03F4C98-48CB-4170-910B-8B4AEECB2689}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>lan_Kite</RootNamespace>
+    <RootNamespace>Kite</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -79,11 +79,29 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\lib_Wind\lib\make\attrib.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\make\const.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\make\func.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\make\macro.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\make\merge.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\math\basic.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\math\bit.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\math\concat.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\math\hash.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\mem\basic.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\mem\block.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\mem\eeprom.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\mem\reg.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\type\basic.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\type\char.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\type\range.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\type\string.hpp" />
+    <ClInclude Include="..\..\lib_Wind\lib\wind.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lan_Kite.cpp" />
+    <ClCompile Include="Kite.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

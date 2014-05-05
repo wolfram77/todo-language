@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kite", "Kite\Kite.vcxproj", "{D03F4C98-48CB-4170-910B-8B4AEECB2689}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D03F4C98-48CB-4170-910B-8B4AEECB2689}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D03F4C98-48CB-4170-910B-8B4AEECB2689}.Debug|Win32.Build.0 = Debug|Win32
+		{D03F4C98-48CB-4170-910B-8B4AEECB2689}.Release|Win32.ActiveCfg = Release|Win32
+		{D03F4C98-48CB-4170-910B-8B4AEECB2689}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
