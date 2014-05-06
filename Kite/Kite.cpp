@@ -37,6 +37,11 @@
 #include "stdafx.h"
 #include "wind\wind.hpp"
 
+int x()
+{
+	return 0;
+}
+
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -44,6 +49,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	mem_Swap(a, b);
 	printf("Hello %d\n", a);
 	scanf_s("%c", &a);
+	x();
 	return 0;
 }
 

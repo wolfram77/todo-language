@@ -16,17 +16,17 @@
     <Filter Include="Header Files\wind">
       <UniqueIdentifier>{499a6f52-de7f-454e-91ac-a73066779fcc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\wind\type">
-      <UniqueIdentifier>{9bf611d0-7045-4241-bd5c-117f475ce2ea}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\wind\mem">
-      <UniqueIdentifier>{f23c09c0-bf4e-4728-a023-037b9747ae4d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\wind\make">
-      <UniqueIdentifier>{330ded3f-2304-4e52-bb5b-6a8987474077}</UniqueIdentifier>
+      <UniqueIdentifier>{948363fe-a45f-42ec-9941-d618962c7276}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\wind\math">
-      <UniqueIdentifier>{9f519253-ad19-4769-a512-59bedb6d9eca}</UniqueIdentifier>
+      <UniqueIdentifier>{d471958f-1940-44db-8f9b-44e625cbc1d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\wind\make">
+      <UniqueIdentifier>{07e68ce9-142f-4af1-b1aa-c7bc640248df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\wind\type">
+      <UniqueIdentifier>{bc23442f-be4b-432c-a22b-cc7a22c50304}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -39,59 +39,62 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="wind\mem\basic.hpp">
+      <Filter>Header Files\wind\mem</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\mem\block.hpp">
+      <Filter>Header Files\wind\mem</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\mem\eeprom.hpp">
+      <Filter>Header Files\wind\mem</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\mem\reg.hpp">
+      <Filter>Header Files\wind\mem</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\math\basic.hpp">
+      <Filter>Header Files\wind\math</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\math\bit.hpp">
+      <Filter>Header Files\wind\math</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\math\concat.hpp">
+      <Filter>Header Files\wind\math</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\math\hash.hpp">
+      <Filter>Header Files\wind\math</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\make\attrib.hpp">
+      <Filter>Header Files\wind\make</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\make\const.hpp">
+      <Filter>Header Files\wind\make</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\make\func.hpp">
+      <Filter>Header Files\wind\make</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\make\macro.hpp">
+      <Filter>Header Files\wind\make</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\make\merge.hpp">
+      <Filter>Header Files\wind\make</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\type\basic.hpp">
+      <Filter>Header Files\wind\type</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\type\char.hpp">
+      <Filter>Header Files\wind\type</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\type\range.hpp">
+      <Filter>Header Files\wind\type</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\type\string.hpp">
+      <Filter>Header Files\wind\type</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\lib_Wind\lib\wind.hpp">
+      <Filter>Header Files\wind\type</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\wind.hpp">
       <Filter>Header Files\wind</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\type\basic.hpp">
-      <Filter>Header Files\wind\type</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\type\char.hpp">
-      <Filter>Header Files\wind\type</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\type\range.hpp">
-      <Filter>Header Files\wind\type</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\type\string.hpp">
-      <Filter>Header Files\wind\type</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\mem\basic.hpp">
-      <Filter>Header Files\wind\mem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\mem\block.hpp">
-      <Filter>Header Files\wind\mem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\mem\eeprom.hpp">
-      <Filter>Header Files\wind\mem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\mem\reg.hpp">
-      <Filter>Header Files\wind\mem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\make\macro.hpp">
-      <Filter>Header Files\wind\make</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\make\merge.hpp">
-      <Filter>Header Files\wind\make</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\make\attrib.hpp">
-      <Filter>Header Files\wind\make</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\make\const.hpp">
-      <Filter>Header Files\wind\make</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\make\func.hpp">
-      <Filter>Header Files\wind\make</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\math\basic.hpp">
-      <Filter>Header Files\wind\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\math\bit.hpp">
-      <Filter>Header Files\wind\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\math\concat.hpp">
-      <Filter>Header Files\wind\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\math\hash.hpp">
-      <Filter>Header Files\wind\math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

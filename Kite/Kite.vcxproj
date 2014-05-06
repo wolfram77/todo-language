@@ -79,26 +79,27 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\lib_Wind\lib\make\attrib.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\make\const.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\make\func.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\make\macro.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\make\merge.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\math\basic.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\math\bit.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\math\concat.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\math\hash.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\mem\basic.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\mem\block.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\mem\eeprom.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\mem\reg.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\type\basic.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\type\char.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\type\range.hpp" />
-    <ClInclude Include="..\..\lib_Wind\lib\type\string.hpp" />
     <ClInclude Include="..\..\lib_Wind\lib\wind.hpp" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="wind\make\attrib.hpp" />
+    <ClInclude Include="wind\make\const.hpp" />
+    <ClInclude Include="wind\make\func.hpp" />
+    <ClInclude Include="wind\make\macro.hpp" />
+    <ClInclude Include="wind\make\merge.hpp" />
+    <ClInclude Include="wind\math\basic.hpp" />
+    <ClInclude Include="wind\math\bit.hpp" />
+    <ClInclude Include="wind\math\concat.hpp" />
+    <ClInclude Include="wind\math\hash.hpp" />
+    <ClInclude Include="wind\mem\basic.hpp" />
+    <ClInclude Include="wind\mem\block.hpp" />
+    <ClInclude Include="wind\mem\eeprom.hpp" />
+    <ClInclude Include="wind\mem\reg.hpp" />
+    <ClInclude Include="wind\type\basic.hpp" />
+    <ClInclude Include="wind\type\char.hpp" />
+    <ClInclude Include="wind\type\range.hpp" />
+    <ClInclude Include="wind\type\string.hpp" />
+    <ClInclude Include="wind\wind.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Kite.cpp" />
