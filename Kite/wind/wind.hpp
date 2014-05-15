@@ -49,11 +49,11 @@
 
 
 // make properties
-#define	WORD_SIZE		64
+#define	WORD_SIZE		32
 #define	CHAR_MODE		ASCII
 #define	COMPILER		VISUALCPP
 #define	DEVICE			PROCESSOR
-#define	ARCHITECTURE	X64
+#define	ARCHITECTURE	X86
 #define	OS				WINDOWS
 
 

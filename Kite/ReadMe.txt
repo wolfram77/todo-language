@@ -1,40 +1,11 @@
-========================================================================
-    CONSOLE APPLICATION : Kite Project Overview
-========================================================================
+I need a low-level [access] and yet a high level [construct] programming language.
+Hence, the programming language would be a mid-level programming language.
 
-AppWizard has created this Kite application for you.
+When we talk about computers, there is fast access to slow access memory
+The number of levels might change in the future, code should be good enough to work great on it as well.
+Registers | Cache | RAM | IO Devices
 
-This file contains a summary of what you will find in each of the files that
-make up your Kite application.
+Its all about operating on data, and its transfer from A to B.
 
-
-Kite.vcxproj
-    This is the main project file for VC++ projects generated using an Application Wizard.
-    It contains information about the version of Visual C++ that generated the file, and
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
-
-Kite.vcxproj.filters
-    This is the filters file for VC++ projects generated using an Application Wizard. 
-    It contains information about the association between the files in your project 
-    and the filters. This association is used in the IDE to show grouping of files with
-    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
-    "Source Files" filter).
-
-Kite.cpp
-    This is the main application source file.
-
-/////////////////////////////////////////////////////////////////////////////
-Other standard files:
-
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named Kite.pch and a precompiled types file named StdAfx.obj.
-
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
-
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
-
-/////////////////////////////////////////////////////////////////////////////
+There exist separate register names for each architecture.
+Often, each register has its own unique functionality.

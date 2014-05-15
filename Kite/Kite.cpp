@@ -37,21 +37,15 @@
 #include "stdafx.h"
 #include "wind\wind.hpp"
 
-int oye()
-{
-	double x = math::Sign(-PI);
-	printf("Abs = %f\n\n", x);
-	return 0;
-}
+
+char waitInp;
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	uint a = 10, b = 5;
-	mem_Swap(a, b);
-	printf("Hello %d\n", a);
-	oye();
-	scanf_s("%c", &a);
+	printf("KITE  - Programming Language for all machines\n");
+	printf("---------------------------------------------\n");
+	scanf_s("%c", &waitInp);
 	return 0;
 }
 
