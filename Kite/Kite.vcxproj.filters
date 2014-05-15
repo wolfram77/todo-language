@@ -90,9 +90,6 @@
     <ClInclude Include="wind\type\string.hpp">
       <Filter>Header Files\wind\type</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\lib_Wind\lib\wind.hpp">
-      <Filter>Header Files\wind\type</Filter>
-    </ClInclude>
     <ClInclude Include="wind\wind.hpp">
       <Filter>Header Files\wind</Filter>
     </ClInclude>
