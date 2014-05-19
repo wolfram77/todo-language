@@ -9,3 +9,7 @@ Its all about operating on data, and its transfer from A to B.
 
 There exist separate register names for each architecture.
 Often, each register has its own unique functionality.
+
+I will make an AVR assembler now:
+ADD R, R
+SUB R, R

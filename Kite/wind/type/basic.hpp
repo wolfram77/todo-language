@@ -38,25 +38,30 @@
 #define	_TYPE_BASIC_HPP_
 
 
+namespace wind
+{
+
+
 // basic values
-#ifndef null
-#define null	(0)
+#ifndef NULL
+#define NULL	(0)
 #endif // !null
 
-#ifndef true
-#define	true	(1)
-#define	false	(0)
+#ifndef TRUE
+#define	TRUE	(1)
+#define	FALSE	(0)
 #endif // !true
 
 
 // character types
-typedef wchar_t			wchar;
+typedef	wchar_t			wchar;
+#define	wcharof(str)	L##str
 #if CHAR_MODE == ASCII
 typedef char			tchar;
-#define	totchar(str)	str
+#define	tcharof(str)	str
 #else // UNICODE
 typedef wchar			tchar;
-#define	totchar(str)	L##str
+#define	tcharof(str)	L##str
 #endif
 
 
@@ -80,7 +85,7 @@ typedef	uint8	uword;
 typedef	int16	word;
 typedef	uint16	uword;
 #elif WORD_SIZE == 32
-typedef int32	word;
+  typedef int32	word;
 typedef uint32	uword;
 #else // 64
 typedef int64	word;
@@ -92,19 +97,14 @@ typedef uint64	uword;
 // named types
 #ifndef byte
 typedef	unsigned char	byte;
+typedef	signed char		sbyte;
 #endif // !byte
-#ifndef ubyte
-typedef	unsigned char	ubyte;
-#endif // !ubyte
-#ifndef ushort
 typedef unsigned short	ushort;
-#endif // !ushort
-#ifndef uint
 typedef unsigned int	uint;
-#endif // !uint
-#ifndef ulong
 typedef unsigned long	ulong;
-#endif // !ulong
+
+
+} // end namespace wind
 
 
 #endif /* _TYPE_BASIC_HPP_ */

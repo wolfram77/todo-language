@@ -37,15 +37,23 @@
 #include "stdafx.h"
 #include "wind\wind.hpp"
 
+using namespace wind;
 
+
+// global data
 char waitInp;
+
+
+void Test()
+{
+}
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	printf("KITE  - Programming Language for all machines\n");
-	printf("---------------------------------------------\n");
+	printf("KASM - Kite Assembler\n");
+	printf("---------------------\n");
+	Test();
 	scanf_s("%c", &waitInp);
 	return 0;
 }
-

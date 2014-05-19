@@ -50,7 +50,7 @@
 
 // make properties
 #define	WORD_SIZE		32
-#define	CHAR_MODE		ASCII
+#define	TEXT_MODE		ASCII
 #define	COMPILER		VISUALCPP
 #define	DEVICE			PROCESSOR
 #define	ARCHITECTURE	X86
@@ -72,8 +72,10 @@
 
 // types
 #include "type\basic.hpp"
-#include "type\char.hpp"
 #include "type\range.hpp"
+#include "type\char.hpp"
+#include "type\wchar.hpp"
+#include "type\tchar.hpp"
 #include "type\string.hpp"
 
 
@@ -83,7 +85,8 @@
 
 // memory
 #include "mem\basic.hpp"
-#include "mem\block.hpp"
+#include "mem\heap.hpp"
+#include "mem\pointer.hpp"
 
 
 #endif /* _WIND_HPP_ */

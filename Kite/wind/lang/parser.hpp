@@ -31,80 +31,24 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * char.hpp - ascii character wrapper
+ * parser.hpp - language parser
  */
 
-#ifndef _TYPE_CHAR_HPP_
-#define _TYPE_CHAR_HPP_
+#ifndef _LANG_PARSER_HPP_
+#define _LANG_PARSER_HPP_
 
 
-namespace wind
-{
+// required headers
+#include "..\type\string.hpp"
+#include "..\data\list.hpp"
 
 
-// ascii character wrapper class
-// can be type casted to char
-class char_
+class parser
 {
 public:
+	list<char*, 8>	ParamList;
+
+};
 
 
-	// char value
-	char Value;
-
-
-	// for type conversion
-	inline char_()
-	{ Value = '\0'; }
-
-	inline char_(char ch)
-	{ Value = ch; }
-
-	inline void operator=(char ch)
-	{ Value = ch; }
-
-	inline operator char() const
-	{ return Value; }
-
-	// wrapper functionality
-	inline bool IsLowerCase() const
-	{ return (Value >= 'a') && (Value <= 'z'); }
-
-	inline bool IsUpperCase() const
-	{ return (Value >= 'A') && (Value <= 'Z'); }
-
-	inline bool IsAlphabet() const
-	{ return IsLowerCase() || IsUpperCase(); }
-
-	inline bool IsDigit() const
-	{ return (Value >= '0') && (Value <= '9'); }
-
-	inline bool IsBlank() const
-	{ return (Value == '\t') || (Value == ' '); }
-
-	inline bool IsSpace() const
-	{ return IsBlank(); }
-
-	inline char_ GetLowerCase() const
-	{ return (char_) IsUpperCase()? (Value - 'A' + 'a') : Value; }
-
-	inline char_ GetUpperCase() const
-	{ return (char_) IsLowerCase()? (Value - 'a' + 'A') : Value; }
-
-	inline char GetChar() const
-	{ return Value; }
-
-	inline wchar GetWchar() const
-	{ return (wchar) Value; }
-
-	inline tchar GetTchar() const
-	{ return (tchar) Value; }
-
-
-}; // end class char_
-
-
-} // end namespace wind
-
-
-#endif /* _TYPE_CHAR_HPP_ */
+#endif /* _LANG_PARSER_HPP_ */

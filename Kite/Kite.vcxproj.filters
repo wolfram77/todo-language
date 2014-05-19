@@ -28,14 +28,17 @@
     <Filter Include="Header Files\wind\type">
       <UniqueIdentifier>{bc23442f-be4b-432c-a22b-cc7a22c50304}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\wind\lang">
+      <UniqueIdentifier>{c80bf678-d41f-4b83-a076-087b7a80198c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\wind\data">
+      <UniqueIdentifier>{09e49d32-0270-480b-b14b-49af81d91633}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -92,6 +95,36 @@
     </ClInclude>
     <ClInclude Include="wind\wind.hpp">
       <Filter>Header Files\wind</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\lang\parser.hpp">
+      <Filter>Header Files\wind\lang</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\data\buffer.hpp">
+      <Filter>Header Files\wind\data</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\data\list.hpp">
+      <Filter>Header Files\wind\data</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\data\queue.hpp">
+      <Filter>Header Files\wind\data</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\type\tchar.hpp">
+      <Filter>Header Files\wind\type</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\type\wchar.hpp">
+      <Filter>Header Files\wind\type</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\type\lstring.hpp">
+      <Filter>Header Files\wind\type</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\mem\heap.hpp">
+      <Filter>Header Files\wind\mem</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\mem\pointer.hpp">
+      <Filter>Header Files\wind\mem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

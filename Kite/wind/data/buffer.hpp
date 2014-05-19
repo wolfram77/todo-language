@@ -31,80 +31,44 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * char.hpp - ascii character wrapper
+ * buffer.hpp - basic buffer structure
  */
 
-#ifndef _TYPE_CHAR_HPP_
-#define _TYPE_CHAR_HPP_
+#ifndef _DATA_BUFFER_HPP_
+#define _DATA_BUFFER_HPP_
 
 
-namespace wind
+// required headers
+#include "..\type\basic.hpp"
+
+
+// basic buffer definition
+template <uint size>
+union buffer
 {
+	int8	Int8[1];
+	uint8	Uint8[1];
+	int16	Int16[1];
+	uint16	Uint16[1];
+	int32	Int32[1];
+	uint32	Uint32[1];
+	int64	Int64[1];
+	uint64	Uint64[1];
+	int		Int[1];
+	uint	Uint[1];
+	word	Word[1];
+	uword	Uword[1];
+	byte	Byte[size];
+	ubyte	UByte[1];
+	sbyte	Sbyte[1];
+	char	Char[1];
+	short	Short[1];
+	ushort	Ushort[1];
+	long	Long[1];
+	ulong	Ulong[1];
+	float	Float[1];
+	double	Double[1];
+};
 
 
-// ascii character wrapper class
-// can be type casted to char
-class char_
-{
-public:
-
-
-	// char value
-	char Value;
-
-
-	// for type conversion
-	inline char_()
-	{ Value = '\0'; }
-
-	inline char_(char ch)
-	{ Value = ch; }
-
-	inline void operator=(char ch)
-	{ Value = ch; }
-
-	inline operator char() const
-	{ return Value; }
-
-	// wrapper functionality
-	inline bool IsLowerCase() const
-	{ return (Value >= 'a') && (Value <= 'z'); }
-
-	inline bool IsUpperCase() const
-	{ return (Value >= 'A') && (Value <= 'Z'); }
-
-	inline bool IsAlphabet() const
-	{ return IsLowerCase() || IsUpperCase(); }
-
-	inline bool IsDigit() const
-	{ return (Value >= '0') && (Value <= '9'); }
-
-	inline bool IsBlank() const
-	{ return (Value == '\t') || (Value == ' '); }
-
-	inline bool IsSpace() const
-	{ return IsBlank(); }
-
-	inline char_ GetLowerCase() const
-	{ return (char_) IsUpperCase()? (Value - 'A' + 'a') : Value; }
-
-	inline char_ GetUpperCase() const
-	{ return (char_) IsLowerCase()? (Value - 'a' + 'A') : Value; }
-
-	inline char GetChar() const
-	{ return Value; }
-
-	inline wchar GetWchar() const
-	{ return (wchar) Value; }
-
-	inline tchar GetTchar() const
-	{ return (tchar) Value; }
-
-
-}; // end class char_
-
-
-} // end namespace wind
-
-
-#endif /* _TYPE_CHAR_HPP_ */
+#endif /* _DATA_BUFFER_HPP_ */
