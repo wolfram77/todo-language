@@ -31,63 +31,81 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * eeprom.hpp - EEPROM driver file
+ * type\char_func.h - Defines ansANSI character wrapper class with standard associated functions
+ * This file is part of the Wind library for C++.
  */
 
-#ifndef _MEM_EEPROM_HPP_
-#define _MEM_EEPROM_HPP_
+#ifndef _TYPE_CHAR_H_
+#define _TYPE_CHAR_H_
 
 
 // required headers
-#include "..\make\const.hpp"
+#include "char_func.h"
 
 
-#if ARCHITECTURE == AVR
+namespace wind {
 
 
-namespace mem
+// ANSI character wrapper class
+// can be type casted to char
+class char_
 {
-using namespace data;
-
-class eeprom
-{
-	struct task
-	{
-		void*	Dest;
-		void*	Src;
-		uint	Size;
-	};
-	
-	private:
-	queue<task, 16> Tasks;
-	
-	private:
-	void _Isr()
-	{
-		_Handler();
-	}
-	
-	void _Handler()
-	{
-		
-	}
-	
-	public:
-	void Read(void* dest, void* src, uint size)
-	{
-		// Check if queue is already full or not, if yes, block
-		task tsk = {dest, src, size};
-		Tasks.PushRear(tsk);
-	}
-	
-	void Write(void* dest, void* src, uint size)
-	{
-		task tsk = {dest, src, size};
-	}
-};
-
-} // end (namespace) mem
 
 
-#endif
-#endif /* _MEM_EEPROM_HPP_ */
+public:
+	// data
+	char Value;
+
+
+	// initialization
+	inline operator char() const
+	{ return Value; }
+
+	inline void operator=(char ch)
+	{ Value = ch; }
+
+	inline char_(char ch='\0')
+	{ Value = ch; }
+
+	inline static char_ Create(char ch='\0')
+	{ return char_(ch); }
+
+	inline void Destroy()
+	{ Value = '\0'; }
+
+	// functions
+	inline bool IsLowerCase() const
+	{ return char_IsLowerCase(Value); }
+
+	inline bool IsUpperCase() const
+	{ return char_IsUpperCase(Value); }
+
+	inline bool IsAlphabet() const
+	{ return char_IsAlphabet(Value); }
+
+	inline bool IsDigit() const
+	{ return char_IsDigit(Value); }
+
+	inline char_ GetLowerCase() const
+	{ return (char_) char_GetLowerCase(Value); }
+
+	inline char_ GetUpperCase() const
+	{ return (char_) char_GetUpperCase(Value); }
+
+	inline char GetChar() const
+	{ return Value; }
+
+	inline wchar GetWchar() const
+	{ return (wchar) Value; }
+
+	inline tchar GetTchar() const
+	{ return (tchar) Value; }
+
+
+}; // end class char_
+
+
+} // end namespace wind
+
+
+#endif /* _TYPE_CHAR_H_ */

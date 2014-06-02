@@ -31,62 +31,46 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * wind.hpp - main include file
+ * support\constants.h - Wind configuration and support constants declaration file
+ * This file is part of the Wind library for C++.
  */
 
-#ifndef _WIND_HPP_
-#define _WIND_HPP_
+#ifndef _SUPPORT_CONSTANTS_H_
+#define _SUPPORT_CONSTANTS_H_
 
 
-// required headers
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+// TEXT_MODE
+#define	ANSI		0x0000
+#define	ASCII		ANSI
+#ifndef UNICODE
+#define	UNICODE		0x0001
+#endif
 
 
-// make constants
-#include "make\const.hpp"
+// DEVICE
+#define	PROCESSOR	0x0010
+#define	CONTROLLER	0x0011
 
 
-// make properties
-#define	WORD_SIZE		32
-#define	TEXT_MODE		ASCII
-#define	COMPILER		VISUALCPP
-#define	DEVICE			PROCESSOR
-#define	ARCHITECTURE	X86
-#define	OS				WINDOWS
+// ARCHITECTURE
+#define	AVR			0x0020
+#define	X86			0x0021
+#define	X64			0x0022
 
 
-// required headers
-#if OS == WINDOWS
-#include <Windows.h>
-#endif // OS == WINDOWS
+// OS
+#define	NO_OS		0x0030
+#define	WINDOWS		0x0031
 
 
-// make support
-#include "make\attrib.hpp"
-#include "make\func.hpp"
-#include "make\macro.hpp"
-#include "make\merge.hpp"
+// COMPILER
+#define	GCC			0x0040
+#define	VISUAL_CPP	0x0041
 
 
-// types
-#include "type\basic.hpp"
-#include "type\range.hpp"
-#include "type\char.hpp"
-#include "type\wchar.hpp"
-#include "type\tchar.hpp"
-#include "type\string.hpp"
+// HEAP_MODE
+#define	SINGLE_HEAP	0x0050
+#define	MULTI_HEAP	0x0051
 
 
-// math
-#include "math\basic.hpp"
-
-
-// memory
-#include "mem\basic.hpp"
-#include "mem\heap.hpp"
-#include "mem\pointer.hpp"
-
-
-#endif /* _WIND_HPP_ */
+#endif /* _SUPPORT_CONSTANTS_H_ */

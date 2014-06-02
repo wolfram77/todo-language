@@ -29,12 +29,13 @@
  *     EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * ----------------------------------------------------------------------- */
+
 /* 
- * basic.hpp - basic math functions
+ * math\basic.h - basic math functions
  */
 
-#ifndef _MATH_BASIC_HPP_
-#define _MATH_BASIC_HPP_
+#ifndef _MATH_BASIC_H_
+#define _MATH_BASIC_H_
 
 
 // header config
@@ -43,8 +44,13 @@
 
 // required headers
 #include <math.h>
-#include "..\make\macro.hpp"
-#include "..\type\basic.hpp"
+#include "..\make\macro.h"
+#include "..\type\basic.h"
+
+
+#ifdef __cplusplus
+namespace wind {
+#endif
 
 
 // constants
@@ -91,65 +97,47 @@
 // maximum of values
 template <typename T>
 inline T Max(T a, T b)
-{
-	return (a > b)? a : b;
-}
+{ return (a > b)? a : b; }
 
 template <typename T>
 inline T Max(T a, T b, T c)
-{
-	return Max(Max(a, b), c);
-}
+{ return Max(Max(a, b), c); }
 
 template <typename T>
 inline T Max(T a, T b, T c, T d)
-{
-	return Max(Max(a, b), Max(c, d));
-}
+{ return Max(Max(a, b), Max(c, d));}
 
 
 // minimum of values
 template <typename T>
 inline T Min(T a, T b)
-{
-	return (a < b)? a : b;
-}
+{ return (a < b)? a : b; }
 
 template <typename T>
 inline T Min(T a, T b, T c)
-{
-	return Min(Min(a, b), c);
-}
+{ return Min(Min(a, b), c); }
 
 template <typename T>
 inline T Min(T a, T b, T c, T d)
-{
-	return Min(Min(a, b), Min(c, d));
-}
+{ return Min(Min(a, b), Min(c, d)); }
 
 
 // absolute value
 template <typename T>
 inline T Abs(T a)
-{
-	return (a < 0)? -a : a;
-}
+{ return (a < 0)? -a : a; }
 
 
 // sign of value
 template <typename T>
 inline T Sign(T a)
-{
-	return (a >= 0)? ((a > 0)? 1 : 0) : -1;
-}
+{ return (a >= 0)? ((a > 0)? 1 : 0) : -1; }
 
 
 // square
 template <typename T>
 inline T Sqr(T a)
-{
-	return a*a;
-}
+{ return a*a; }
 
 
 // base 2 logarithm
@@ -169,9 +157,12 @@ T Log2(T a)
 // power of 2
 template <typename T>
 inline T Exp2(T a) 
-{
-	return 1 << a;
-}
+{ return 1 << a; }
 
 
-#endif /* _MATH_BASIC_HPP_ */
+#ifdef __cplusplus
+} // end namespace wind
+#endif
+
+
+#endif /* _MATH_BASIC_H_ */

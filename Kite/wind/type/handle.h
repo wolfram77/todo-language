@@ -31,42 +31,33 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * Kite.cpp - main source file
+ * type\handle.h - Defines handle datatype for storing object handles
+ * This file is part of the Wind library for C++.
  */
 
-#include "stdafx.h"
-#include "wind\wind.h"
-
-using namespace wind;
+#ifndef _TYPE_HANDLE_HPP_
+#define _TYPE_HANDLE_HPP_
 
 
-// global data
-char waitInp;
+// required headers
+#include "..\support\constants.h"
+#if OS == WINDOWS
+#include <Windows.h>
+#endif
 
-void Test()
+
+namespace wind
 {
-	heap::Begin();
-	for(int i=0; i<200; i++)
-	{
-		heap Heap = heap::Create();
-		for(int j=0; j<1000; j++)
-		{
-			block<int> ptr = block<char>::Create(Heap, 1000);
-			ptr.Resize(2000);
-			ptr.Destroy();
-		}
-		printf("%d\n", i);
-		Heap.Destroy();
-	}
-	heap::End();
-	printf("done\n");
-}
 
-int _tmain(int argc, _TCHAR* argv[])
-{
-	printf("KASM - Kite Assembler\n");
-	printf("---------------------\n");
-	Test();
-	scanf_s("%c", &waitInp);
-	return 0;
-}
+
+#if OS == WINDOWS
+typedef void* handle;
+#else
+typedef HANDLE handle;
+#endif
+
+
+} // end namespace wind
+
+
+#endif /* _TYPE_HANDLE_HPP_ */

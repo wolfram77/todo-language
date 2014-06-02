@@ -47,7 +47,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -84,30 +84,33 @@
     <ClInclude Include="wind\data\buffer.hpp" />
     <ClInclude Include="wind\data\list.hpp" />
     <ClInclude Include="wind\data\queue.hpp" />
-    <ClInclude Include="wind\lang\parser.hpp" />
-    <ClInclude Include="wind\make\attrib.hpp" />
-    <ClInclude Include="wind\make\const.hpp" />
-    <ClInclude Include="wind\make\func.hpp" />
-    <ClInclude Include="wind\make\macro.hpp" />
-    <ClInclude Include="wind\make\merge.hpp" />
-    <ClInclude Include="wind\math\basic.hpp" />
+    <ClInclude Include="wind\math\basic.h" />
     <ClInclude Include="wind\math\bit.hpp" />
     <ClInclude Include="wind\math\concat.hpp" />
     <ClInclude Include="wind\math\hash.hpp" />
-    <ClInclude Include="wind\mem\basic.hpp" />
-    <ClInclude Include="wind\mem\block.hpp" />
-    <ClInclude Include="wind\mem\eeprom.hpp" />
-    <ClInclude Include="wind\mem\heap.hpp" />
-    <ClInclude Include="wind\mem\pointer.hpp" />
-    <ClInclude Include="wind\mem\reg.hpp" />
-    <ClInclude Include="wind\type\basic.hpp" />
-    <ClInclude Include="wind\type\char.hpp" />
+    <ClInclude Include="wind\memory\address.h" />
+    <ClInclude Include="wind\memory\variable.h" />
+    <ClInclude Include="wind\memory\block.h" />
+    <ClInclude Include="wind\memory\heap.h" />
+    <ClInclude Include="wind\memory\block_func.h" />
+    <ClInclude Include="wind\memory\heap_func.h" />
+    <ClInclude Include="wind\support\attributes.h" />
+    <ClInclude Include="wind\support\constants.h" />
+    <ClInclude Include="wind\support\keywords.h" />
+    <ClInclude Include="wind\support\macro_overloading.h" />
+    <ClInclude Include="wind\support\merge.h" />
+    <ClInclude Include="wind\type\handle.h" />
+    <ClInclude Include="wind\type\primitives.h" />
+    <ClInclude Include="wind\type\char.h" />
+    <ClInclude Include="wind\type\char_func.h" />
     <ClInclude Include="wind\type\lstring.hpp" />
-    <ClInclude Include="wind\type\range.hpp" />
+    <ClInclude Include="wind\type\ranges.h" />
     <ClInclude Include="wind\type\string.hpp" />
-    <ClInclude Include="wind\type\tchar.hpp" />
-    <ClInclude Include="wind\type\wchar.hpp" />
-    <ClInclude Include="wind\wind.hpp" />
+    <ClInclude Include="wind\type\tchar.h" />
+    <ClInclude Include="wind\type\tchar_func.h" />
+    <ClInclude Include="wind\type\wchar.h" />
+    <ClInclude Include="wind\type\wchar_func.h" />
+    <ClInclude Include="wind\wind.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Kite.cpp" />

@@ -31,42 +31,31 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * Kite.cpp - main source file
+ * type\tchar.hpp - text (from TEXT_MODE) character wrapper
  */
 
-#include "stdafx.h"
-#include "wind\wind.h"
-
-using namespace wind;
+#ifndef _TYPE_TCHAR_H_
+#define _TYPE_TCHAR_H_
 
 
-// global data
-char waitInp;
+// required headers
+#include "..\support\constants.h"
+#include "char.h"
+#include "wchar.h"
 
-void Test()
-{
-	heap::Begin();
-	for(int i=0; i<200; i++)
-	{
-		heap Heap = heap::Create();
-		for(int j=0; j<1000; j++)
-		{
-			block<int> ptr = block<char>::Create(Heap, 1000);
-			ptr.Resize(2000);
-			ptr.Destroy();
-		}
-		printf("%d\n", i);
-		Heap.Destroy();
-	}
-	heap::End();
-	printf("done\n");
-}
+namespace wind {
 
-int _tmain(int argc, _TCHAR* argv[])
-{
-	printf("KASM - Kite Assembler\n");
-	printf("---------------------\n");
-	Test();
-	scanf_s("%c", &waitInp);
-	return 0;
-}
+
+// text character wrapper class
+// can be type casted to tchar
+#if TEXT_MODE == ANSI
+typedef char_	tchar_;
+#else // TEXT_MODE == UNICODE
+typedef wchar_	tchar_;
+#endif // TEXT_MODE == ASCII
+
+
+} // end namespace wind
+
+
+#endif /* _TYPE_TCHAR_H_ */

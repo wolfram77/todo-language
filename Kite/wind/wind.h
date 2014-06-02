@@ -31,42 +31,68 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * Kite.cpp - main source file
+ * wind.h - main include file
  */
 
-#include "stdafx.h"
-#include "wind\wind.h"
-
-using namespace wind;
+#ifndef _WIND_H_
+#define _WIND_H_
 
 
-// global data
-char waitInp;
+// required headers
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "support\constants.h"
 
-void Test()
-{
-	heap::Begin();
-	for(int i=0; i<200; i++)
-	{
-		heap Heap = heap::Create();
-		for(int j=0; j<1000; j++)
-		{
-			block<int> ptr = block<char>::Create(Heap, 1000);
-			ptr.Resize(2000);
-			ptr.Destroy();
-		}
-		printf("%d\n", i);
-		Heap.Destroy();
-	}
-	heap::End();
-	printf("done\n");
-}
+// Wind configuration settings
+#define	WORD_SIZE		32
+#define	TEXT_MODE		ANSI
+#define	HEAP_MODE		MULTI_HEAP
+#define	COMPILER		VISUAL_CPP
+#define	DEVICE			PROCESSOR
+#define	ARCHITECTURE	X86
+#define	OS				WINDOWS
 
-int _tmain(int argc, _TCHAR* argv[])
-{
-	printf("KASM - Kite Assembler\n");
-	printf("---------------------\n");
-	Test();
-	scanf_s("%c", &waitInp);
-	return 0;
-}
+
+// required headers
+#if OS == WINDOWS
+#include <Windows.h>
+#endif
+
+
+// make support
+#include "support\keywords.h"
+#include "support\attributes.h"
+#include "support\macro_overloading.h"
+#include "support\merge.h"
+
+
+// types
+#include "type\primitives.h"
+#include "type\ranges.h"
+#include "type\handle.h"
+#include "type\char.h"
+#include "type\wchar.h"
+#include "type\tchar.h"
+
+
+// memory
+#include "memory\heap_func.h"
+#include "memory\heap.h"
+#include "memory\block_func.h"
+#include "memory\address.h"
+#include "memory\block.h"
+/*
+// math
+#include "math\basic.hpp"
+
+
+// memory
+#include "mem\basic.hpp"
+#include "mem\heap.hpp"
+#include "mem\address.hpp"
+#include "mem\block.hpp"
+*/
+
+
+#endif /* _WIND_H_ */

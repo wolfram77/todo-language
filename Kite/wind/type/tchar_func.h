@@ -31,42 +31,51 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * Kite.cpp - main source file
+ * type\tchar_func.h - Provides generic text (from TEXT_MODE) character functions
+ * This file is part of the Wind library for C++.
  */
 
-#include "stdafx.h"
-#include "wind\wind.h"
-
-using namespace wind;
+#ifndef _TYPE_TCHAR_FUNC_H_
+#define _TYPE_TCHAR_FUNC_H_
 
 
-// global data
-char waitInp;
+// required headers
+#include "primitives.h"
 
-void Test()
-{
-	heap::Begin();
-	for(int i=0; i<200; i++)
-	{
-		heap Heap = heap::Create();
-		for(int j=0; j<1000; j++)
-		{
-			block<int> ptr = block<char>::Create(Heap, 1000);
-			ptr.Resize(2000);
-			ptr.Destroy();
-		}
-		printf("%d\n", i);
-		Heap.Destroy();
-	}
-	heap::End();
-	printf("done\n");
-}
 
-int _tmain(int argc, _TCHAR* argv[])
-{
-	printf("KASM - Kite Assembler\n");
-	printf("---------------------\n");
-	Test();
-	scanf_s("%c", &waitInp);
-	return 0;
-}
+namespace wind {
+
+
+// functions
+inline bool tchar_IsLowerCase(tchar ch)
+{ return (ch >= tcharof('a')) && (ch <= tcharof('z')); }
+
+inline bool tchar_IsUpperCase(tchar ch)
+{ return (ch >= tcharof('A')) && (ch <= tcharof('Z')); }
+
+inline bool tchar_IsAlphabet(tchar ch)
+{ return tchar_IsLowerCase(ch) || tchar_IsUpperCase(ch); }
+
+inline bool tchar_IsDigit(tchar ch)
+{ return (ch >= tcharof('0')) && (ch <= tcharof('9')); }
+
+inline tchar tchar_GetLowerCase(tchar ch)
+{ return tchar_IsUpperCase(ch)? (ch - tcharof('A') + tcharof('a')) : ch; }
+
+inline tchar tchar_GetUpperCase(tchar ch)
+{ return tchar_IsLowerCase(ch)? (ch - tcharof('a') + tcharof('A')) : ch; }
+
+inline char tchar_GetChar(tchar ch)
+{ return (char) ch; }
+
+inline wchar tchar_GetWchar(tchar ch)
+{ return (wchar) ch; }
+
+inline tchar tchar_GetTchar(tchar ch)
+{ return ch; }
+
+
+} // end namespace wind
+
+
+#endif /* _TYPE_TCHAR_FUNC_H_ */

@@ -31,80 +31,84 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * char.hpp - ascii character wrapper
+ * memory\address.h - Defines a memory address wrapper class that provides common associated functionality
+ * This file is part of the Wind library for C++.
  */
 
-#ifndef _TYPE_CHAR_HPP_
-#define _TYPE_CHAR_HPP_
+#ifndef _MEMORY_ADDRESS_H_
+#define _MEMORY_ADDRESS_H_
 
 
-namespace wind
+// required headers
+#include "block_func.h"
+
+
+namespace wind {
+
+
+// memory address wrapper class
+// can be type casted to type*
+template <typename T>
+class address
 {
 
 
-// ascii character wrapper class
-// can be type casted to char
-class char_
-{
 public:
+	// data
+	T* Value;
+	
 
+public:
+	// initialization
+	inline void operator=(void* addr)
+	{ Value = (T*) addr; }
 
-	// char value
-	char Value;
-
-
-	// for type conversion
-	inline char_()
-	{ Value = '\0'; }
-
-	inline char_(char ch)
-	{ Value = ch; }
-
-	inline void operator=(char ch)
-	{ Value = ch; }
-
-	inline operator char() const
+	inline operator T*() const
 	{ return Value; }
 
-	// wrapper functionality
-	inline bool IsLowerCase() const
-	{ return (Value >= 'a') && (Value <= 'z'); }
+	inline address(void* addr=NULL)
+	{ Value = (T*) addr; }
 
-	inline bool IsUpperCase() const
-	{ return (Value >= 'A') && (Value <= 'Z'); }
+	inline static address Create(void* addr=NULL)
+	{ return address(addr); }
 
-	inline bool IsAlphabet() const
-	{ return IsLowerCase() || IsUpperCase(); }
-
-	inline bool IsDigit() const
-	{ return (Value >= '0') && (Value <= '9'); }
-
-	inline bool IsBlank() const
-	{ return (Value == '\t') || (Value == ' '); }
-
-	inline bool IsSpace() const
-	{ return IsBlank(); }
-
-	inline char_ GetLowerCase() const
-	{ return (char_) IsUpperCase()? (Value - 'A' + 'a') : Value; }
-
-	inline char_ GetUpperCase() const
-	{ return (char_) IsLowerCase()? (Value - 'a' + 'A') : Value; }
-
-	inline char GetChar() const
-	{ return Value; }
-
-	inline wchar GetWchar() const
-	{ return (wchar) Value; }
-
-	inline tchar GetTchar() const
-	{ return (tchar) Value; }
+	inline void Destroy()
+	{ Value = NULL; }
 
 
-}; // end class char_
+	// functions
+	inline void Fill(uint size, byte val)
+	{ block_Fill(Value, size, val); }
+
+	inline void FillZero(uint size)
+	{ block_FillZero(Value, size); }
+
+	inline void Copy(const void* src, uint size)
+	{ block_Copy(Value, src, size); }
+
+	inline void Copy(uint dstSize, const void* src, uint size)
+	{ block_Copy(Value, dstSize, src, size); }
+
+	inline void Move(const void* src, uint size)
+	{ block_Move(Value, src, size); }
+
+	inline void Move(uint dstSize, const void* src, uint size)
+	{ block_Move(Value, dstSize, src, size); }
+
+	inline int Compare(const void* addr, uint size) const
+	{ return block_Compare(Value, addr, size); }
+
+	inline bool Equals(const void* addr, uint size) const
+	{ return block_Equals(Value, addr, size); }
+
+	inline void* Find(uint size, byte val)
+	{ return block_Find(Value, size, val); }
+
+
+}; // end class address
 
 
 } // end namespace wind
 
 
-#endif /* _TYPE_CHAR_HPP_ */
+#endif /* _MEMORY_ADDRESS_H_ */

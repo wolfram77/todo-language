@@ -31,31 +31,77 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * tchar.hpp - text (from TEXT_MODE) character wrapper
+ * heap.h - Defines a heap wrapper class that provides functions for dynamic memory management
+ * This file is part of the Wind library for C++.
  */
 
-#ifndef _TYPE_TCHAR_HPP_
-#define _TYPE_TCHAR_HPP_
+#ifndef _MEMORY_HEAP_H_
+#define _MEMORY_HEAP_H_
 
 
 // required headers
-#include "..\make\const.hpp"
+#include "heap_func.h"
 
 
-namespace wind
+namespace wind {
+
+
+// heap wrapper class
+// for memory management
+class heap
 {
 
 
-// text character wrapper class
-// can be type casted to tchar
-#if TEXT_MODE == ASCII
-typedef char_	tchar_;
-#else // TEXT_MODE == UNICODE
-typedef wchar_	tchar_;
-#endif // TEXT_MODE == ASCII
+public:
+	// data
+	static heap	Default;
+	handle Handle;
+
+
+public:
+	// initialization
+	inline static void Begin()
+	{ Default.Handle = heap_Begin(); }
+
+	inline static void End()
+	{ Default.Handle = NULL; }
+
+	inline operator handle()
+	{ return Handle; }
+
+	inline heap(handle hHeap=NULL)
+	{ Handle = hHeap; }
+
+	inline static heap Create(uint startSize=0, uint flags=0)
+	{ return heap(heap_Create(startSize, flags)); }
+
+	inline void Destroy()
+	{ heap_Destroy(Handle); Handle = NULL; }
+
+	// getprocessheaps
+
+	// functions
+	inline void* Alloc(uint size, uint flags=0)
+	{ return heap_Alloc(Handle, size, flags); }
+
+	inline void* ReAlloc(void* addr, uint size, uint flags=0)
+	{ return heap_ReAlloc(Handle, addr, size, flags); }
+
+	inline void Free(void* addr, uint flags=0)
+	{ heap_Free(Handle, addr, flags); }
+
+	inline void Optimize(uint flags=0)
+	{ heap_Optimize(Handle, flags); }
+
+
+}; // end class heap
+
+
+// static heap data
+heap heap::Default;
 
 
 } // end namespace wind
 
 
-#endif /* _TYPE_TCHAR_HPP_ */
+#endif /* _MEMORY_HEAP_H_ */

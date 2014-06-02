@@ -31,58 +31,51 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * func.hpp - common global macros
+ * type\char_func.h - Provides standard ANSI character functions
+ * This file is part of the Wind library for C++.
  */
 
-#ifndef _MAKE_FUNC_HPP_
-#define _MAKE_FUNC_HPP_
+#ifndef _TYPE_CHAR_FUNC_H_
+#define _TYPE_CHAR_FUNC_H_
 
 
 // required headers
-#include "const.hpp"
+#include "primitives.h"
 
 
-// typeof macro
-#if COMPILER == VISUALCPP
-#define typeof(expr)	decltype(expr)
-#endif // COMPILER == VISUALCPP
+namespace wind {
 
 
-// token to string
-#ifndef stringof
-#define stringof(a)		#a
-#endif // !tostring
+// functions
+inline bool char_IsLowerCase(char ch)
+{ return (ch >= 'a') && (ch <= 'z'); }
+
+inline bool char_IsUpperCase(char ch)
+{ return (ch >= 'A') && (ch <= 'Z'); }
+
+inline bool char_IsAlphabet(char ch)
+{ return char_IsLowerCase(ch) || char_IsUpperCase(ch); }
+
+inline bool char_IsDigit(char ch)
+{ return (ch >= '0') && (ch <= '9'); }
+
+inline char char_GetLowerCase(char ch)
+{ return char_IsUpperCase(ch)? (ch - 'A' + 'a') : ch; }
+
+inline char char_GetUpperCase(char ch)
+{ return char_IsLowerCase(ch)? (ch - 'a' + 'A') : ch; }
+
+inline char char_GetChar(char ch)
+{ return ch; }
+
+inline wchar char_GetWchar(char ch)
+{ return (wchar) ch; }
+
+inline tchar char_GetTchar(char ch)
+{ return (tchar) ch; }
 
 
-// mark unused variables
-#ifndef unused
-#define unused(var)		(void)(var)
-#endif // !unused
+} // end namespace wind
 
 
-// memory barrier (prevents reordering)
-#if COMPILER == GCC
-#ifndef barrier
-#define barrier()		asm volatile("" ::: "memory")
-#endif // !barrier
-#endif // COMPILER == GCC
-
-
-// assembly coding
-#if COMPILER == GCC
-#ifndef assembly
-#define assembly		__asm__ __volatile__
-#endif // !assembly
-#ifndef line
-#define line(text)		text "\n\t"
-#endif // !line
-#else // COMPILER == VISUALCPP
-#ifndef assembly
-#define assembly		__asm
-#endif // !assembly
-#ifndef line
-#define line(text)		text
-#endif // !line
-#endif
-
-#endif /* _MAKE_FUNC_HPP_ */
+#endif /* _TYPE_CHAR_FUNC_H_ */

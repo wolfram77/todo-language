@@ -31,38 +31,84 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * merge.hpp - token merging macro
+ * type\primitive.h - Defines basic primitive datatypes for use with the Wind library
+ * This file is part of the Wind library for C++.
  */
 
-#ifndef _MAKE_MERGE_HPP_
-#define _MAKE_MERGE_HPP_
+#ifndef	_TYPE_PRIMITIVES_H_
+#define	_TYPE_PRIMITIVES_H_
 
 
 // required headers
-#include "macro.hpp"
+#include "..\support\constants.h"
 
 
-// token merger
-#ifndef merge
-#define merge2(a, b)											a##b
-#define merge3(a, b, c)											a##b##c
-#define merge4(a, b, c, d)										a##b##c##d
-#define merge5(a, b, c, d, e)									a##b##c##d##e
-#define merge6(a, b, c, d, e, f)								a##b##c##d##e##f
-#define merge7(a, b, c, d, e, f, g)								a##b##c##d##e##f##g
-#define merge8(a, b, c, d, e, f, g, h)							a##b##c##d##e##f##g##h
-#define merge9(a, b, c, d, e, f, g, h, i)						a##b##c##d##e##f##g##h##i
-#define merge10(a, b, c, d, e, f, g, h, i, j)					a##b##c##d##e##f##g##h##i##j##k
-#define merge11(a, b, c, d, e, f, g, h, i, j, k)				a##b##c##d##e##f##g##h##i##j##k##l
-#define merge12(a, b, c, d, e, f, g, h, i, j, k, l)				a##b##c##d##e##f##g##h##i##j##k##l
-#define merge13(a, b, c, d, e, f, g, h, i, j, k, l, m)			a##b##c##d##e##f##g##h##i##j##k##l##m
-#define merge14(a, b, c, d, e, f, g, h, i, j, k, l, m, n)		a##b##c##d##e##f##g##h##i##j##k##l##m##n
-#define merge15(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o)	a##b##c##d##e##f##g##h##i##j##k##l##m##n##o
-#define merge16(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p)	a##b##c##d##e##f##g##h##i##j##k##l##m##n##o##p
-
-#define merge(...)	\
-macro_Fn(macro_Fn16(__VA_ARGS__, merge16, merge15, merge14, merge13, merge12, merge11, merge10, merge9, merge8, merge7, merge6, merge5, merge4, merge3, merge2)(__VA_ARGS__))
-#endif // !merge
+namespace wind {
 
 
-#endif /* _MAKE_MERGE_HPP_ */
+// basic values
+#ifndef NULL
+#define NULL	(0)
+#endif
+
+#ifndef TRUE
+#define	TRUE	(1)
+#define	FALSE	(0)
+#endif
+
+
+// character types
+typedef	wchar_t			wchar;
+#define	wcharof(str)	L##str
+#if TEXT_MODE == ANSI
+typedef char			tchar;
+#define	tcharof(str)	str
+#else // UNICODE
+typedef wchar			tchar;
+#define	tcharof(str)	L##str
+#endif
+
+
+// size-specific integers
+typedef	signed char			int8;
+typedef	unsigned char		uint8;
+typedef	short				int16;
+typedef	unsigned short		uint16;
+typedef	long				int32;
+typedef	unsigned long		uint32;
+typedef	long long			int64;
+typedef	unsigned long long	uint64;
+
+
+// word size integer
+#ifndef word
+#if WORD_SIZE == 8
+typedef	int8	word;
+typedef	uint8	uword;
+#elif WORD_SIZE == 16
+typedef	int16	word;
+typedef	uint16	uword;
+#elif WORD_SIZE == 32
+typedef int32	word;
+typedef uint32	uword;
+#else // 64
+typedef int64	word;
+typedef uint64	uword;
+#endif
+#endif // !word
+
+
+// named types
+#if OS != WINDOWS
+typedef	unsigned char	byte;
+#endif
+typedef	signed char		sbyte;
+typedef unsigned short	ushort;
+typedef unsigned int	uint;
+typedef unsigned long	ulong;
+
+
+} // end namespace wind
+
+
+#endif /* _TYPE_PRIMITIVES_H_ */

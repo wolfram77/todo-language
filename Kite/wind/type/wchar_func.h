@@ -31,45 +31,51 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * const.hpp - constant declaration file
+ * type\wchar_func.h - Provides standard Unicode (wide) character functions
+ * This file is part of the Wind library for C++.
  */
 
-#ifndef _MAKE_CONST_HPP_
-#define _MAKE_CONST_HPP_
+#ifndef _TYPE_WCHAR_FUNC_H_
+#define _TYPE_WCHAR_FUNC_H_
 
 
-// TEXT_MODE
-#ifndef ASCII
-#define	ASCII		0x0000
-#endif // !ASCII
-#ifndef UNICODE
-#define	UNICODE		0x0001
-#endif // !UNICODE
+// required headers
+#include "primitives.h"
 
 
-// DEVICE
-#define	PROCESSOR	0x0010
-#define	CONTROLLER	0x0011
+namespace wind {
 
 
-// ARCHITECTURE
-#define	X86			0x0020
-#define	X64			0x0021
-#define	AVR			0x0022
+// functions
+inline bool wchar_IsLowerCase(wchar ch)
+{ return (ch >= L'a') && (ch <= L'z'); }
+
+inline bool wchar_IsUpperCase(wchar ch)
+{ return (ch >= L'A') && (ch <= L'Z'); }
+
+inline bool wchar_IsAlphabet(wchar ch)
+{ return wchar_IsLowerCase(ch) || wchar_IsUpperCase(ch); }
+
+inline bool wchar_IsDigit(wchar ch)
+{ return (ch >= L'0') && (ch <= L'9'); }
+
+inline wchar wchar_GetLowerCase(wchar ch)
+{ return wchar_IsUpperCase(ch)? (ch - L'A' + L'a') : ch; }
+
+inline wchar wchar_GetUpperCase(wchar ch)
+{ return wchar_IsLowerCase(ch)? (ch - L'a' + L'A') : ch; }
+
+inline char wchar_GetChar(wchar ch)
+{ return (char) ch; }
+
+inline wchar wchar_GetWwchar(wchar ch)
+{ return ch; }
+
+inline tchar wchar_GetTwchar(wchar ch)
+{ return (tchar) ch; }
 
 
-// OS
-#ifndef NONE
-#define	NONE		0x0020
-#endif // !AVR
-#ifndef WINDOWS
-#define	WINDOWS		0x0021
-#endif // !WIN32
+} // end namespace wind
 
 
-// COMPILER
-#define	GCC			0x0030
-#define	VISUALCPP	0x0031
-
-
-#endif /* _MAKE_CONST_HPP_ */
+#endif /* _TYPE_WCHARF_H_ */

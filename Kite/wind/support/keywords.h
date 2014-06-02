@@ -31,80 +31,64 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * wchar.hpp - wide (unicode) character wrapper
+ * support\keywords.h - Provides cross-compiler keyword-type functions for certain operations
+ * This file is part of the Wind library for C++.
  */
 
-#ifndef _TYPE_WCHAR_HPP_
-#define _TYPE_WCHAR_HPP_
+#ifndef _SUPPORT_KEYWORDS_H_
+#define _SUPPORT_KEYWORDS_H_
 
 
-namespace wind
-{
+// required headers
+#include "constants.h"
 
 
-// wide character wrapper class
-// can be type casted to wchar
-class wchar_
-{
-public:
+// get type of a variable
+#if COMPILER == VISUAL_CPP
+#define typeof(expr)	decltype(expr)
+#endif
 
 
-	// wchar value
-	wchar Value;
+// convert a token to string
+#ifndef stringof
+#define stringof(a)		#a
+#endif
 
 
-	// for type conversion
-	inline wchar_()
-	{ Value = '\0'; }
-
-	inline wchar_(wchar ch)
-	{ Value = ch; }
-
-	inline void operator=(wchar ch)
-	{ Value = ch; }
-
-	inline operator wchar() const
-	{ return Value; }
-
-	// wrapper functionality
-	inline bool IsLowerCase() const
-	{ return (Value >= L'a') && (Value <= L'z'); }
-
-	inline bool IsUpperCase() const
-	{ return (Value >= L'A') && (Value <= L'Z'); }
-
-	inline bool IsAlphabet() const
-	{ return IsLowerCase() || IsUpperCase(); }
-
-	inline bool IsDigit() const
-	{ return (Value >= L'0') && (Value <= L'9'); }
-
-	inline bool IsBlank() const
-	{ return (Value == L'\t') || (Value == L' '); }
-
-	inline bool IsSpace() const
-	{ return IsBlank(); }
-
-	inline wchar_ GetLowerCase() const
-	{ return (wchar_) IsUpperCase()? (Value - L'A' + L'a') : Value; }
-
-	inline wchar_ GetUpperCase() const
-	{ return (wchar_) IsLowerCase()? (Value - L'a' + L'A') : Value; }
-
-	inline char GetChar() const
-	{ return (char) Value; }
-
-	inline wchar GetWchar() const
-	{ return Value; }
-
-	inline tchar GetTchar() const
-	{ return (tchar) Value; }
+// mark unused variables
+#ifndef unusedvar
+#define unusedvar(var)		(void)(var)
+#endif
 
 
-}; // end class wchar_
+// specify byte address
+#define byteaddr(base, off)	\
+(((unsigned char*)(base)) + (off))
 
 
-} // end namespace wind
+// memory barrier to prevent reordering
+#if COMPILER == GCC
+#ifndef barrier
+#define barrier()		asm volatile("" ::: "memory")
+#endif
+#endif // COMPILER == GCC
 
 
-#endif /* _TYPE_WCHAR_HPP_ */
+// assembly coding
+#if COMPILER == GCC
+#ifndef assembly
+#define assembly		__asm__ __volatile__
+#endif
+#ifndef line
+#define line(text)		text "\n\t"
+#endif
+#else // COMPILER != GCC
+#ifndef assembly
+#define assembly		__asm
+#endif
+#ifndef line
+#define line(text)		text
+#endif
+#endif // COMPILER == GCC
+
+#endif /* _SUPPORT_KEYWORDS_H_ */
