@@ -48,9 +48,6 @@
     <ClInclude Include="wind\math\hash.hpp">
       <Filter>Header Files\wind\math</Filter>
     </ClInclude>
-    <ClInclude Include="wind\type\string.hpp">
-      <Filter>Header Files\wind\type</Filter>
-    </ClInclude>
     <ClInclude Include="wind\data\buffer.hpp">
       <Filter>Header Files\wind\data</Filter>
     </ClInclude>
@@ -60,23 +57,11 @@
     <ClInclude Include="wind\data\queue.hpp">
       <Filter>Header Files\wind\data</Filter>
     </ClInclude>
-    <ClInclude Include="wind\type\lstring.hpp">
-      <Filter>Header Files\wind\type</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="wind\wind.h">
       <Filter>Header Files\wind</Filter>
-    </ClInclude>
-    <ClInclude Include="wind\type\char.h">
-      <Filter>Header Files\wind\type</Filter>
-    </ClInclude>
-    <ClInclude Include="wind\type\wchar.h">
-      <Filter>Header Files\wind\type</Filter>
-    </ClInclude>
-    <ClInclude Include="wind\type\tchar.h">
-      <Filter>Header Files\wind\type</Filter>
     </ClInclude>
     <ClInclude Include="wind\math\basic.h">
       <Filter>Header Files\wind\math</Filter>
@@ -102,24 +87,6 @@
     <ClInclude Include="wind\type\ranges.h">
       <Filter>Header Files\wind\type</Filter>
     </ClInclude>
-    <ClInclude Include="wind\type\char_func.h">
-      <Filter>Header Files\wind\type</Filter>
-    </ClInclude>
-    <ClInclude Include="wind\type\wchar_func.h">
-      <Filter>Header Files\wind\type</Filter>
-    </ClInclude>
-    <ClInclude Include="wind\type\tchar_func.h">
-      <Filter>Header Files\wind\type</Filter>
-    </ClInclude>
-    <ClInclude Include="wind\memory\address.h">
-      <Filter>Header Files\wind\memory</Filter>
-    </ClInclude>
-    <ClInclude Include="wind\memory\block.h">
-      <Filter>Header Files\wind\memory</Filter>
-    </ClInclude>
-    <ClInclude Include="wind\memory\block_func.h">
-      <Filter>Header Files\wind\memory</Filter>
-    </ClInclude>
     <ClInclude Include="wind\memory\heap_func.h">
       <Filter>Header Files\wind\memory</Filter>
     </ClInclude>
@@ -129,8 +96,23 @@
     <ClInclude Include="wind\memory\heap.h">
       <Filter>Header Files\wind\memory</Filter>
     </ClInclude>
-    <ClInclude Include="wind\type\handle.h">
+    <ClInclude Include="wind\data\stringz_func.h">
+      <Filter>Header Files\wind\data</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\type\gchar_func.h">
       <Filter>Header Files\wind\type</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\type\gchar.h">
+      <Filter>Header Files\wind\type</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\data\string_func.h">
+      <Filter>Header Files\wind\data</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\memory\buffer.h">
+      <Filter>Header Files\wind\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\memory\buffer_func.h">
+      <Filter>Header Files\wind\memory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

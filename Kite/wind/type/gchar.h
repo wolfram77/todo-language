@@ -31,84 +31,95 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * memory\address.h - Defines a memory address wrapper class that provides common associated functionality
+ * type\gchar_func.h - Defines generic character wrapper class with standard associated functions
  * This file is part of the Wind library for C++.
  */
 
-#ifndef _MEMORY_ADDRESS_H_
-#define _MEMORY_ADDRESS_H_
+#ifndef _TYPE_GCHAR_H_
+#define _TYPE_GCHAR_H_
 
 
 // required headers
-#include "block_func.h"
+#include "gchar_func.h"
 
 
 namespace wind {
 
 
-// memory address wrapper class
-// can be type casted to type*
+// Generic character wrapper class
+// can be type casted to char
 template <typename T>
-class address
+class gchar
 {
 
 
 public:
 	// data
-	T* Value;
-	
+	char Value;
+
 
 public:
 	// initialization
-	inline void operator=(void* addr)
-	{ Value = (T*) addr; }
-
-	inline operator T*() const
+	inline operator T() const
 	{ return Value; }
 
-	inline address(void* addr=NULL)
-	{ Value = (T*) addr; }
+	inline void operator=(T ch)
+	{ Value = ch; }
 
-	inline static address Create(void* addr=NULL)
-	{ return address(addr); }
+	inline gchar(T ch='\0')
+	{ Value = ch; }
+
+	inline static gchar Create(T ch='\0')
+	{ return gchar(ch); }
 
 	inline void Destroy()
-	{ Value = NULL; }
-
+	{ Value = '\0'; }
 
 	// functions
-	inline void Fill(uint size, byte val)
-	{ block_Fill(Value, size, val); }
+	inline bool IsLowerCase() const
+	{ return gchar_IsLowerCase(Value); }
 
-	inline void FillZero(uint size)
-	{ block_FillZero(Value, size); }
+	inline bool IsUpperCase() const
+	{ return gchar_IsUpperCase(Value); }
 
-	inline void Copy(const void* src, uint size)
-	{ block_Copy(Value, src, size); }
+	inline bool IsAlphabet() const
+	{ return gchar_IsAlphabet(Value); }
 
-	inline void Copy(uint dstSize, const void* src, uint size)
-	{ block_Copy(Value, dstSize, src, size); }
+	inline bool IsDigit() const
+	{ return gchar_IsDigit(Value); }
 
-	inline void Move(const void* src, uint size)
-	{ block_Move(Value, src, size); }
+	inline gchar GetLowerCase() const
+	{ return (gchar) gchar_GetLowerCase(Value); }
 
-	inline void Move(uint dstSize, const void* src, uint size)
-	{ block_Move(Value, dstSize, src, size); }
+	inline gchar GetUpperCase() const
+	{ return (gchar) gchar_GetUpperCase(Value); }
 
-	inline int Compare(const void* addr, uint size) const
-	{ return block_Compare(Value, addr, size); }
+	inline char GetChar() const
+	{ return gchar_GetChar(Value); }
 
-	inline bool Equals(const void* addr, uint size) const
-	{ return block_Equals(Value, addr, size); }
+	inline wchar GetWchar() const
+	{ return gchar_GetWchar(Value); }
 
-	inline void* Find(uint size, byte val)
-	{ return block_Find(Value, size, val); }
+	inline tchar GetTchar() const
+	{ return gchar_GetTchar(Value); }
 
 
-}; // end class address
+}; // end class gchar
+
+
+// ANSI character wrapper
+typedef gchar<char> char_;
+
+
+// Unicode (wide) character wrapper
+typedef gchar<wchar> wchar_;
+
+
+// Text (from TEXT_MODE) character wrapper
+typedef gchar<tchar> tchar_;
 
 
 } // end namespace wind
 
 
-#endif /* _MEMORY_ADDRESS_H_ */
+#endif /* _TYPE_GCHAR_H_ */

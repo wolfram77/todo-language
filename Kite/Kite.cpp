@@ -43,6 +43,7 @@ using namespace wind;
 // global data
 char waitInp;
 
+
 void Test()
 {
 	heap::Begin();
@@ -51,7 +52,7 @@ void Test()
 		heap Heap = heap::Create();
 		for(int j=0; j<1000; j++)
 		{
-			block<int> ptr = block<char>::Create(Heap, 1000);
+			buffer<int> ptr = buffer<char>::Create(Heap, 1000);
 			ptr.Resize(2000);
 			ptr.Destroy();
 		}

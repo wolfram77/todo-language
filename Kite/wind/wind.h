@@ -70,18 +70,15 @@
 // types
 #include "type\primitives.h"
 #include "type\ranges.h"
-#include "type\handle.h"
-#include "type\char.h"
-#include "type\wchar.h"
-#include "type\tchar.h"
+#include "type\gchar_func.h"
+#include "type\gchar.h"
 
 
 // memory
 #include "memory\heap_func.h"
 #include "memory\heap.h"
-#include "memory\block_func.h"
-#include "memory\address.h"
-#include "memory\block.h"
+#include "memory\buffer_func.h"
+#include "memory\buffer.h"
 /*
 // math
 #include "math\basic.hpp"

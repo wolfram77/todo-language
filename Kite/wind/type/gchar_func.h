@@ -31,81 +31,60 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * type\char_func.h - Defines ansANSI character wrapper class with standard associated functions
+ * type\gchar_func.h - Provides standard generic-type character functions
  * This file is part of the Wind library for C++.
  */
 
-#ifndef _TYPE_CHAR_H_
-#define _TYPE_CHAR_H_
+#ifndef _TYPE_GCHAR_FUNC_H_
+#define _TYPE_GCHAR_FUNC_H_
 
 
 // required headers
-#include "char_func.h"
+#include "primitives.h"
 
 
 namespace wind {
 
 
-// ANSI character wrapper class
-// can be type casted to char
-class char_
-{
+// functions
+template <typename T>
+inline bool gchar_IsLowerCase(T ch)
+{ return (ch >= 'a') && (ch <= 'z'); }
 
+template <typename T>
+inline bool gchar_IsUpperCase(T ch)
+{ return (ch >= 'A') && (ch <= 'Z'); }
 
-public:
-	// data
-	char Value;
+template <typename T>
+inline bool gchar_IsAlphabet(T ch)
+{ return gchar_IsLowerCase(ch) || gchar_IsUpperCase(ch); }
 
+template <typename T>
+inline bool gchar_IsDigit(T ch)
+{ return (ch >= '0') && (ch <= '9'); }
 
-	// initialization
-	inline operator char() const
-	{ return Value; }
+template <typename T>
+inline char gchar_GetLowerCase(T ch)
+{ return gchar_IsUpperCase(ch)? (ch - 'A' + 'a') : ch; }
 
-	inline void operator=(char ch)
-	{ Value = ch; }
+template <typename T>
+inline char gchar_GetUpperCase(T ch)
+{ return gchar_IsLowerCase(ch)? (ch - 'a' + 'A') : ch; }
 
-	inline char_(char ch='\0')
-	{ Value = ch; }
+template <typename T>
+inline char gchar_GetChar(T ch)
+{ return (char) ch; }
 
-	inline static char_ Create(char ch='\0')
-	{ return char_(ch); }
+template <typename T>
+inline wchar gchar_GetWchar(T ch)
+{ return (wchar) ch; }
 
-	inline void Destroy()
-	{ Value = '\0'; }
-
-	// functions
-	inline bool IsLowerCase() const
-	{ return char_IsLowerCase(Value); }
-
-	inline bool IsUpperCase() const
-	{ return char_IsUpperCase(Value); }
-
-	inline bool IsAlphabet() const
-	{ return char_IsAlphabet(Value); }
-
-	inline bool IsDigit() const
-	{ return char_IsDigit(Value); }
-
-	inline char_ GetLowerCase() const
-	{ return (char_) char_GetLowerCase(Value); }
-
-	inline char_ GetUpperCase() const
-	{ return (char_) char_GetUpperCase(Value); }
-
-	inline char GetChar() const
-	{ return Value; }
-
-	inline wchar GetWchar() const
-	{ return (wchar) Value; }
-
-	inline tchar GetTchar() const
-	{ return (tchar) Value; }
-
-
-}; // end class char_
+template <typename T>
+inline tchar gchar_GetTchar(T ch)
+{ return (tchar) ch; }
 
 
 } // end namespace wind
 
 
-#endif /* _TYPE_CHAR_H_ */
+#endif /* _TYPE_GCHAR_FUNC_H_ */
