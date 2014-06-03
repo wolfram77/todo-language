@@ -48,9 +48,6 @@
     <ClInclude Include="wind\math\hash.hpp">
       <Filter>Header Files\wind\math</Filter>
     </ClInclude>
-    <ClInclude Include="wind\data\buffer.hpp">
-      <Filter>Header Files\wind\data</Filter>
-    </ClInclude>
     <ClInclude Include="wind\data\list.hpp">
       <Filter>Header Files\wind\data</Filter>
     </ClInclude>
@@ -99,9 +96,6 @@
     <ClInclude Include="wind\data\stringz_func.h">
       <Filter>Header Files\wind\data</Filter>
     </ClInclude>
-    <ClInclude Include="wind\type\gchar_func.h">
-      <Filter>Header Files\wind\type</Filter>
-    </ClInclude>
     <ClInclude Include="wind\type\gchar.h">
       <Filter>Header Files\wind\type</Filter>
     </ClInclude>
@@ -112,6 +106,12 @@
       <Filter>Header Files\wind\memory</Filter>
     </ClInclude>
     <ClInclude Include="wind\memory\buffer_func.h">
+      <Filter>Header Files\wind\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\data\gstring.h">
+      <Filter>Header Files\wind\data</Filter>
+    </ClInclude>
+    <ClInclude Include="wind\memory\address.h">
       <Filter>Header Files\wind\memory</Filter>
     </ClInclude>
   </ItemGroup>

@@ -46,22 +46,11 @@ char waitInp;
 
 void Test()
 {
-	heap::Begin();
-	for(int i=0; i<200; i++)
-	{
-		heap Heap = heap::Create();
-		for(int j=0; j<1000; j++)
-		{
-			buffer<int> ptr = buffer<char>::Create(Heap, 1000);
-			ptr.Resize(2000);
-			ptr.Destroy();
-		}
-		printf("%d\n", i);
-		Heap.Destroy();
-	}
-	heap::End();
-	printf("done\n");
+	address<int> x = address<void>(NULL);
+	buffer<int> buff = buffer<void>::Create(100);
+	buff[0] = 0;
 }
+
 
 int _tmain(int argc, _TCHAR* argv[])
 {

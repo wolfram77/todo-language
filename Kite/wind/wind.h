@@ -70,14 +70,12 @@
 // types
 #include "type\primitives.h"
 #include "type\ranges.h"
-#include "type\gchar_func.h"
 #include "type\gchar.h"
 
 
 // memory
-#include "memory\heap_func.h"
+#include "memory\address.h"
 #include "memory\heap.h"
-#include "memory\buffer_func.h"
 #include "memory\buffer.h"
 /*
 // math

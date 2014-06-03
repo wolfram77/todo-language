@@ -55,9 +55,9 @@
 #endif
 
 
-// mark unused variables
-#ifndef unusedvar
-#define unusedvar(var)		(void)(var)
+// mark unused parameters
+#ifndef unusedpar
+#define unusedpar(param)	(void)(param)
 #endif
 
 

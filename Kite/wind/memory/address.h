@@ -31,60 +31,86 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * type\gchar_func.h - Provides standard generic-type character functions
+ * memory\address.h - Defines a memory address that provides destination-type functions
  * This file is part of the Wind library for C++.
  */
 
-#ifndef _TYPE_GCHAR_FUNC_H_
-#define _TYPE_GCHAR_FUNC_H_
+#ifndef _MEMORY_ADDRESS_H_
+#define _MEMORY_ADDRESS_H_
 
 
 // required headers
-#include "primitives.h"
+#include <stdlib.h>
+#include <string.h>
+#include "..\type\primitives.h"
 
 
 namespace wind {
 
 
-// functions
+// memory address class
+// can be type casted to type*
 template <typename T>
-inline bool gchar_IsLowerCase(T ch)
-{ return (ch >= 'a') && (ch <= 'z'); }
+class address
+{
 
-template <typename T>
-inline bool gchar_IsUpperCase(T ch)
-{ return (ch >= 'A') && (ch <= 'Z'); }
 
-template <typename T>
-inline bool gchar_IsAlphabet(T ch)
-{ return gchar_IsLowerCase(ch) || gchar_IsUpperCase(ch); }
+public:
+	// data
+	T* Value;
+	
 
-template <typename T>
-inline bool gchar_IsDigit(T ch)
-{ return (ch >= '0') && (ch <= '9'); }
+public:
+	// initialization
+	inline operator T*() const
+	{ return Value; }
 
-template <typename T>
-inline char gchar_GetLowerCase(T ch)
-{ return gchar_IsUpperCase(ch)? (ch - 'A' + 'a') : ch; }
+	inline address(const void* addr=NULL)
+	{ Value = (T*) addr; }
 
-template <typename T>
-inline char gchar_GetUpperCase(T ch)
-{ return gchar_IsLowerCase(ch)? (ch - 'a' + 'A') : ch; }
+	inline static address Create(const void* addr=NULL)
+	{ return address(addr); }
 
-template <typename T>
-inline char gchar_GetChar(T ch)
-{ return (char) ch; }
+	inline void Destroy()
+	{ Value = NULL; }
 
-template <typename T>
-inline wchar gchar_GetWchar(T ch)
-{ return (wchar) ch; }
 
-template <typename T>
-inline tchar gchar_GetTchar(T ch)
-{ return (tchar) ch; }
+	// functions
+	inline bool IsValid()
+	{ return Value != NULL; }
+
+	inline void Fill(uint size, byte val)
+	{ memset(Value, val, size); }
+
+	inline void FillZero(uint size)
+	{ memset(Value, 0, size); }
+
+	inline void Copy(const void* src, uint size)
+	{ memcpy(Value, src, size); }
+
+	inline void Copy(uint dstSize, const void* src, uint size)
+	{ memcpy_s(Value, dstSize, src, size); }
+
+	inline void Move(const void* src, uint size)
+	{ memmove(Value, src, size); }
+
+	inline void Move(uint dstSize, const void* src, uint size)
+	{ memmove_s(Value, dstSize, src, size); }
+
+	inline int Compare(const void* addr, uint size) const
+	{ return memcmp(Value, addr, size); }
+
+	inline bool Equals(const void* addr, uint size) const
+	{ return memcmp(Value, addr, size) == 0; }
+
+	inline void* Find(uint size, byte val)
+	{ return memchr(Value, val, size); }
+
+
+}; // end class address
 
 
 } // end namespace wind
 
 
-#endif /* _TYPE_GCHAR_FUNC_H_ */
+#endif /* _MEMORY_ADDRESS_H_ */

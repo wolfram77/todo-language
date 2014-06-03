@@ -31,7 +31,7 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * type\gchar_func.h - Defines generic character wrapper class with standard associated functions
+ * type\gchar_func.h - Defines a generic character wrapper class with source-type functions
  * This file is part of the Wind library for C++.
  */
 
@@ -40,7 +40,7 @@
 
 
 // required headers
-#include "gchar_func.h"
+#include "primitives.h"
 
 
 namespace wind {
@@ -63,10 +63,7 @@ public:
 	inline operator T() const
 	{ return Value; }
 
-	inline void operator=(T ch)
-	{ Value = ch; }
-
-	inline gchar(T ch='\0')
+	inline gchar(T ch)
 	{ Value = ch; }
 
 	inline static gchar Create(T ch='\0')
@@ -77,31 +74,31 @@ public:
 
 	// functions
 	inline bool IsLowerCase() const
-	{ return gchar_IsLowerCase(Value); }
+	{ return (Value >= 'a') && (Value <= 'z'); }
 
 	inline bool IsUpperCase() const
-	{ return gchar_IsUpperCase(Value); }
+	{ return (Value >= 'A') && (Value <= 'Z'); }
 
 	inline bool IsAlphabet() const
-	{ return gchar_IsAlphabet(Value); }
+	{ return IsLowerCase() || IsUpperCase(); }
 
 	inline bool IsDigit() const
-	{ return gchar_IsDigit(Value); }
+	{ return (Value >= '0') && (Value <= '9'); }
 
 	inline gchar GetLowerCase() const
-	{ return (gchar) gchar_GetLowerCase(Value); }
+	{ return IsUpperCase()? gchar(Value - 'A' + 'a') : *this; }
 
 	inline gchar GetUpperCase() const
-	{ return (gchar) gchar_GetUpperCase(Value); }
+	{ return IsLowerCase()? gchar(Value - 'a' + 'A') : *this; }
 
 	inline char GetChar() const
-	{ return gchar_GetChar(Value); }
+	{ return (char) Value; }
 
 	inline wchar GetWchar() const
-	{ return gchar_GetWchar(Value); }
+	{ return (wchar) Value; }
 
 	inline tchar GetTchar() const
-	{ return gchar_GetTchar(Value); }
+	{ return(tchar) Value; }
 
 
 }; // end class gchar
