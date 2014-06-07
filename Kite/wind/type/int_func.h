@@ -31,86 +31,68 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * memory\address.h - Defines a memory address that provides destination-type functions
+ * type\int_func.h - Provides functions for integer character
  * This file is part of the Wind library for C++.
  */
 
-#ifndef _MEMORY_ADDRESS_H_
-#define _MEMORY_ADDRESS_H_
+#ifndef _TYPE_INT_FUNC_H_
+#define _TYPE_INT_FUNC_H_
 
 
 // required headers
-#include <stdlib.h>
-#include <string.h>
-#include "..\type\primitives.h"
+#include "primitives.h"
+#include "gchar_func.h"
 
 
 namespace wind {
 
 
-// memory address class
-// can be type casted to type*
-template <typename T>
-class address
+// functions
+template <typename Tint, typename Tstr>
+bool int_Parse(Tint* dst, Tstr* str, uint len, uint base=0)
 {
-
-
-public:
-	// data
-	T* Value;
-	
-
-public:
-	// initialization
-	inline operator T*() const
-	{ return Value; }
-
-	inline address(const void* addr=NULL)
-	{ Value = (T*) addr; }
-
-	inline static address Create(const void* addr=NULL)
-	{ return address(addr); }
-
-	inline void Destroy()
-	{ Value = NULL; }
-
-
-	// functions
-	inline bool IsValid()
-	{ return Value != NULL; }
-
-	inline void Fill(uint size, byte val)
-	{ memset(Value, val, size); }
-
-	inline void FillZero(uint size)
-	{ memset(Value, 0, size); }
-
-	inline void Copy(const void* src, uint size)
-	{ memcpy(Value, src, size); }
-
-	inline void Copy(uint dstSize, const void* src, uint size)
-	{ memcpy_s(Value, dstSize, src, size); }
-
-	inline void Move(const void* src, uint size)
-	{ memmove(Value, src, size); }
-
-	inline void Move(uint dstSize, const void* src, uint size)
-	{ memmove_s(Value, dstSize, src, size); }
-
-	inline int Compare(const void* addr, uint size) const
-	{ return memcmp(Value, addr, size); }
-
-	inline bool Equals(const void* addr, uint size) const
-	{ return memcmp(Value, addr, size) == 0; }
-
-	inline void* Find(uint size, byte val)
-	{ return memchr(Value, val, size); }
-
-
-}; // end class address
+	// get base from end
+	byte ch = gchar_GetLowerCase(str[len-1]);
+	if(ch == 'o' || ch == 'd' || ch =='h')
+	{
+		--len;
+		if(ch == 'o') base = 8;
+		else if(ch == 'd') base = 10;
+		else base = 16;
+	}
+	// get sign
+	bool neg = false;
+	if(*str == '-')
+	{ neg = true; ++str; --len; }
+	// get base from begin
+	if(*str == '0')
+	{
+		ch = gchar_GetLowerCase(str[1]);
+		if(ch == 't' || ch == 'c' || ch =='x')
+		{
+			str += 2; len -= 2;
+			if(ch == 't') base = 8;
+			else if(ch == 'c') base = 10;
+			else base = 16;
+		}
+	}
+	// default base = 10
+	if(base == 0) base = 10;
+	// parse integer
+	Tint num = 0;
+	for(; len; ++str, --len)
+	{
+		ch = gchar_GetLowerCase(*str);
+		ch = (ch <= '9')? ch - '0' : ch - 'a' + 10;
+		if(ch >= base) return false;
+		num = num*base + ch;
+	}
+	*dst = (neg)? -num : num;
+	return true;
+}
 
 
 } // end namespace wind
 
 
-#endif /* _MEMORY_ADDRESS_H_ */
+#endif /* _TYPE_INT_FUNC_H_ */

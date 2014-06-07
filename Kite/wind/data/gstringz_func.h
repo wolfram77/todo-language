@@ -31,65 +31,33 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * wind.h - main include file
+ * data\gstringz_func.h - Provides functions for zero-terminated generic string
+ * This file is part of the Wind library for C++.
  */
 
-#ifndef _WIND_H_
-#define _WIND_H_
+#ifndef _DATA_GSTRINGZ_FUNC_H_
+#define _DATA_GSTRINGZ_FUNC_H_
 
 
 // required headers
-#include <stdio.h>
-#include <stdlib.h>
+#include "..\type\primitives.h"
 #include <string.h>
-#include "support\constants.h"
-
-// Wind configuration settings
-#define	WORD_SIZE		32
-#define	TEXT_MODE		ANSI
-#define	HEAP_MODE		MULTI_HEAP
-#define	COMPILER		VISUAL_CPP
-#define	DEVICE			PROCESSOR
-#define	ARCHITECTURE	X86
-#define	OS				WINDOWS
 
 
-// required headers
-#if OS == WINDOWS
-#include <Windows.h>
-#endif
+namespace wind {
 
 
-// make support
-#include "support\keywords.h"
-#include "support\attributes.h"
-#include "support\macro_overloading.h"
-#include "support\merge.h"
+// functions
+template <typename T>
+inline uint gstringz_GetLength(const T* str)
+{
+	if(sizeof(T) == sizeof(char)) return strlen(str);
+	else if(sizeof(T) == sizeof(wchar)) return wcslen(str);
+	// else find
+}
 
 
-// types
-#include "type\primitives.h"
-#include "type\ranges.h"
-#include "type\gchar_func.h"
-#include "type\gchar.h"
-#include "type\int_func.h"
+} // end namespace wind
 
 
-// memory
-#include "memory\heap_func.h"
-#include "memory\heap.h"
-//#include "memory\buffer.h"
-/*
-// math
-#include "math\basic.hpp"
-
-
-// memory
-#include "mem\basic.hpp"
-#include "mem\heap.hpp"
-#include "mem\address.hpp"
-#include "mem\block.hpp"
-*/
-
-
-#endif /* _WIND_H_ */
+#endif /* _DATA_GSTRINGZ_FUNC_H_ */

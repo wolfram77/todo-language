@@ -41,7 +41,7 @@
 
 // required headers
 #include "heap.h"
-#include "address.h"
+#include "block.h"
 
 
 namespace wind {
@@ -50,35 +50,27 @@ namespace wind {
 // memory buffer class
 // can be type casted to type*
 template <typename T>
-class buffer
+class buffer : public block<T>
 {
 
 
 public:
 	// data
-	address<T> Address;
-	int	Size;
 	heap Heap;
 
 
 public:
 	// initialization
-	inline operator T*() const
-	{ return Address.Value; }
-
-	inline operator address<T>() const
-	{ return Address; }
-
-	inline buffer()
+	inline buffer(void* addr=NULL, uint size=0)
 	{ Address = NULL; Size = 0; Heap = heap(); }
 
 	inline buffer(void* addr, uint size, heap hHeap=heap())
 	{ Address = addr; Size = size; Heap = hHeap; }
 
-	inline operator buffer<void>() const
-	{ return buffer<void>(Address, Size, Heap); }
+	inline operator buffer<byte>() const
+	{ return buffer<byte>(Address, Size, Heap); }
 
-	inline buffer(const buffer<void> &buff)
+	inline buffer(const buffer<byte> &buff)
 	{ Address = buff.Address.Value; Size = buff.Size; Heap = buff.Heap; }
 
 	inline static buffer Create(heap hHeap, uint size, uint flags=0)
@@ -88,11 +80,14 @@ public:
 	{ return buffer((heap::Default).Alloc(size, flags), size, heap::Default); }
 
 	inline void Destroy(uint flags=0)
-	{ if(Heap.IsValid()) Heap.Free(Address, flags); Address = NULL; Size = 0; Heap.Handle = NULL; }
+	{
+		if(Heap.IsValid()) Heap.Free(Address, flags);
+		Address = NULL; Size = 0; Heap.Handle = NULL;
+	}
 
 	inline bool Resize(uint size, uint flags=0)
 	{
-		if(Heap.IsValid()) Address = Heap.ReAlloc(Address, size, flags);
+		if(Heap.IsValid()) { Address = Heap.ReAlloc(Address, size, flags); }
 		if(Heap.IsValid() || size <= Size) { Size = size; return true; }
 		return false;
 	}
@@ -105,29 +100,47 @@ public:
 	inline bool CanGrow()
 	{ return Heap.IsValid(); }
 
-	inline void Fill(uint size, byte val)
-	{ Address.Fill(size, val); }
+	inline buffer Begin(int off=0, uint size=0)
+	{ return buffer(Address+off, size); }
 
-	inline void Fill(byte val)
-	{ Address.Fill(Size, val); }
+	inline buffer End(int off=0, uint size=0)
+	{ return buffer(Address+Size+off, size); }
+
+	inline buffer BeginFull(int off=0, int sizeOff=0)
+	{ return buffer(Address+off, (uint)(Size+sizeOff)); }
+
+	inline buffer EndFull(int off=0, int sizeOff=0)
+	{ return buffer(Address+Size+off, (uint)(Size+sizeOff)); }
+
+	inline void Fill(T val, uint size=Size)
+	{ Address.Fill(val, size); }
 
 	inline void FillZero(uint size=Size)
 	{ Address.FillZero(size); }
 
-	inline void Copy(const void* src, uint size)
+	inline void Copy(const void* src, uint size=Size)
 	{ Address.Move(Size, src, size); }
 
-	inline void Move(const void* src, uint size)
+	inline void Move(const void* src, uint size=Size)
 	{ Address.Move(Size, src, size); }
 
-	inline int Compare(const void* addr, uint size) const
+	inline int Compare(const T* addr, uint size=Size) const
 	{ return Address.Compare(addr, size); }
 
-	inline bool Equals(const void* addr, uint size) const
+	inline bool Equals(const T* addr, uint size=Size) const
 	{ return Address.Equals(addr, size); }
 
-	inline void* Find(uint size, byte val)
-	{ return Address.Find(size, val); }
+	inline address<T> Find(T val, uint size=Size) const
+	{ return Address.Find(val, size); }
+
+	inline address<T> FindLast(T val, uint size=Size) const
+	{ return Address.FindLast(val, size); }
+
+	inline int IndexOf(T val, uint size=Size) const
+	{ return Address.IndexOf(val, size); }
+
+	inline int IndexOfLast(T val, uint size=Size) const
+	{ return Address.IndexOfLast(val, size); }
 
 
 }; // end class buffer

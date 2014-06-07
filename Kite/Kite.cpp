@@ -43,12 +43,14 @@ using namespace wind;
 // global data
 char waitInp;
 
+int X[10];
+
 
 void Test()
 {
-	address<int> x = address<void>(NULL);
-	buffer<int> buff = buffer<void>::Create(100);
-	buff[0] = 0;
+	int num = 0;
+	char* str = "-12o";
+	bool res = int_Parse(&num, str, strlen(str));
 }
 
 

@@ -31,106 +31,99 @@
  * ----------------------------------------------------------------------- */
 
 /* 
- * type\gchar.h - Defines a generic character wrapper class with source-type functions
+ * data\gstringz.h - Defines a zero-terminated generic string that provides basic destination-type functions
  * This file is part of the Wind library for C++.
  */
 
-#ifndef _TYPE_GCHAR_H_
-#define _TYPE_GCHAR_H_
+#ifndef _DATA_STRINGZ_H_
+#define _DATA_STRINGZ_H_
 
 
 // required headers
-#include "primitives.h"
-#include "gchar_func.h"
+#include "..\support\keywords.h"
+#include "..\memory\address.h"
 
 
 namespace wind {
 
 
-// generic character wrapper class
-// can be type casted to type
-template <typename T>
-class gchar
+// zero-terminated ANSI string class
+// can be type casted to char*
+class stringz
 {
-	
+
 
 public:
 	// data
-	T Value;
+	address<char> Address;
 
 
 public:
 	// initialization
-	inline operator T() const
-	{ return Value; }
+	inline operator char*() const
+	{ return Address.Value; }
 
-	inline gchar(T ch='\0')
-	{ Value = ch; }
+	inline operator address<char>() const
+	{ return Address; }
 
-	inline static gchar Create(T ch='\0')
-	{ return gchar(ch); }
+	inline stringz(void* addr=NULL)
+	{ Address = addr; }
+
+	inline static stringz Create(char* str=NULL)
+	{ return stringz(str); }
 
 	inline void Destroy()
-	{ Value = '\0'; }
+	{ Address = NULL; }
 
-	// operators
-	inline gchar operator ++()
-	{ return ++Value; }
-
-	inline gchar operator ++(T)
-	{ return Value++; }
-
-	inline void operator +=(gchar ch)
-	{ Value += ch.Value; }
-
-	inline void operator -= (gchar ch)
-	{ Value -= ch.Value; }
 
 	// functions
-	inline bool IsLowerCase() const
-	{ return gchar_IsLowerCase(Value); }
+public:
+	inline bool IsValid()
+	{ return Address.IsValid(); }
 
-	inline bool IsUpperCase() const
-	{ return gchar_IsUpperCase(Value); }
+	inline uint GetLength()
+	{ return strlen(Address); }
 
-	inline bool IsAlphabet() const
-	{ return gchar_IsAlphabet(Value);; }
+	inline stringz Part(int off=0, uint len=0)
+	{ Address[len] = '\0'; return stringz(Address + off); }
 
-	inline bool IsDigit() const
-	{ return gchar_IsDigit(Value); }
+	inline stringz PutCopy(stringz str)
+	{ strcat(Address, str); return *this; }
 
-	inline gchar GetLowerCase() const
-	{ return gchar_GetLowerCase(Value); }
+	inline stringz PutReverse(stringz str)
+	{
 
-	inline gchar GetUpperCase() const
-	{ return gchar_GetUpperCase(Value); }
+	}
 
-	inline char GetChar() const
-	{ return gchar_GetChar(Value); }
+	inline void Fill(uint size, char val)
+	{ Address.Fill(size, val); }
 
-	inline wchar GetWchar() const
-	{ return gchar_GetWchar(Value); }
+	inline void Fill(byte val)
+	{ Address.Fill(Length, val); }
 
-	inline tchar GetTchar() const
-	{ return gchar_GetTchar(Value); }
+	inline void FillZero(uint size=Size)
+	{ Address.FillZero(size); }
+
+	inline void Copy(const void* src, uint size)
+	{ Address.Move(Size, src, size); }
+
+	inline void Move(const void* src, uint size)
+	{ Address.Move(Size, src, size); }
+
+	inline int Compare(const void* addr, uint size) const
+	{ return Address.Compare(addr, size); }
+
+	inline bool Equals(const void* addr, uint size) const
+	{ return Address.Equals(addr, size); }
+
+	inline void* Find(uint size, byte val)
+	{ return Address.Find(size, val); }
 
 
-}; // end class gchar
-
-
-// ANSI character wrapper
-typedef gchar<char> char_;
-
-
-// Unicode (wide) character wrapper
-typedef gchar<wchar> wchar_;
-
-
-// Text (from TEXT_MODE) character wrapper
-typedef gchar<tchar> tchar_;
+}; // end class stringz
 
 
 } // end namespace wind
 
 
-#endif /* _TYPE_GCHAR_H_ */
+#endif /* _DATA_STRINGZ_H_ */
