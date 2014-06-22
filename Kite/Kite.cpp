@@ -43,14 +43,13 @@ using namespace wind;
 // global data
 char waitInp;
 
-int X[10];
-
-
 void Test()
 {
-	int num = 0;
-	char* str = "-12o";
-	bool res = int_Parse(&num, str, strlen(str));
+	heap::startup();
+	heap h = heap::create();
+	void* ptr = h.alloc(10);
+	h.free(ptr);
+	heap::cleanup();
 }
 
 
