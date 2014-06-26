@@ -1,3 +1,10 @@
+Developing the Library
+----------------------
+
+
+
+Making a Language
+-----------------
 I need a low-level [access] and yet a high level [construct] programming language.
 Hence, the programming language would be a mid-level programming language.
 
