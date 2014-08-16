@@ -45,7 +45,7 @@ char waitInp;
 
 void Test()
 {
-	heap::startup();
+	heap::startup(); 
 	heap h = heap::create();
 	void* ptr = h.alloc(10);
 	h.free(ptr);
