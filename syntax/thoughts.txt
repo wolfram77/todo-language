@@ -1,0 +1,48 @@
+Advantages of C
+===============
+
+1. Speed of resulting application.
+2. Language set is small and very efficient.
+3. Application in Firmware programming.
+4. Ability to use assembly in it.
+5. Direct communication with devices.
+6. Very easy to learn.
+7. Compiler-based rather than interpreter-based.
+8. It is portable.
+9. Has a huge collection of libraries.
+10. Does not support exception handling.
+
+
+Disadvantages of C
+==================
+1. Does not have OOPS feature.
+2. No runtime checking.
+3. No strict type checking.
+4. It is case sensitive.
+5. 
+
+
+The first and foremost for any language is its syntax, and it must be beautiful. It is required to choose which domain the program would work for.
+My domain is modelling all languages hence is a general programming language, a way of specifying logic that would work in all areas/
+
+List of languages i want to combine:
+Java, C, C++, C#, ASM, BASIC, SQL
+JavaScript, HTML, CSS, PHP
+Python, Ruby, Perl
+Embedded C, C++, ASM
+VHDL, Verilog
+...
+
+List of architectures i want to combine:
+x86, IA-32 (x86-32), AMD64 (x86-64), Intel 64
+Motorola 6800, 68000
+MOS Technology 6502
+Zilog Z80
+Power Architecture
+ARM, ARM64
+Renesas RX CPU
+...
+
+Abstract logic specification is required so that a specified logic can be programmed into any architecture without any modification to the original source code.
+Not only should the logic be abstract but also concurrent in time and space.
+
