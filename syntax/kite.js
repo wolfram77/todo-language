@@ -1,29 +1,71 @@
 "required: ability to create unnamed variables and functions"
 
-"var is a fundamental data-type defaults to int(0)"
-a, b, c = var;
-
-"a is now int"
+"variable with understood type"
 a = 2;
-"a is now double"
-a = 3.14;
+"multiple variable with understood type"
+a & b & c = 3.14;
 
-"4 bit datatype"
-a, b, c = bit(4);
+"variable with explicitly specified type and default data"
+a = int;
+"multiple variables with explicitly specified type and default data"
+a & b & c = float;
 
-"4-bit datatype with initial value"
-a, b, c = bit(4, 0b1000);
+"variable with explicitly specified type"
+a = int(2);
+"multiple variables with explicitly specified type"
+a & b & c = float(3.14);
 
-"constant declaration"
-pi := 22/7;
+"variable with modifiable type and default data"
+a = var;
+"multiple variables with modifiable type and default data"
+a & b & c = var;
 
+"variable with modifiable type"
+a = var(2);
+"multiple variables with modifiable type"
+a & b & c = var(float(3.14));
 
-int a, b, c; "note here that int is a data-type and hence must follow data declaration syntax"
-a .= int;    // a initialized to 0
-a .= int(10);
-a & b = int(10);
-a, b = int(10);
-a = 10;
+"variable with bit type and default data"
+a = bit(2);
+"multiple variable with bit type and default data"
+a & b & c = bit(4);
+
+"variable with bit type"
+a = bit(2, 0b11);
+"multiple variable with bit type"
+a & b & c = bit(4, 0b0101);
+
+"constant variable with understood type"
+a := 2;
+"multiple variables with understood type"
+a & b & c := 22/7;
+
+"constant variable with explicitly specified type"
+a := int(2);
+"multiple variables with explicitly specified type"
+a & b & c := float(22/7);
+
+"defining a structure"
+a = {
+	id = int;
+	price = float;
+}
+"defining multiple structures"
+a & b & c = {
+	id = int;
+	price = float;
+}
+
+"defining a structure with explicitly specified values"
+a = {
+	id = 2;
+	price = float(3.14));
+}
+"defining multiple structures with explicitly specified values"
+a & b & c = {
+	id = int(2);
+	price = var(float(3.14)-);
+}
 
 "if forgot to insert ; this acts as function"
 func = (); {
@@ -37,6 +79,14 @@ struct = {
 }
 
 struct['length'] = 6;
+
+mylib := {
+	+ operator() {}
+}
+
+myprog := {
+	import 'mylib';
+}
 
 "let the only concept be that of encapsulation"
 
@@ -94,17 +144,18 @@ def.+ = {
 	weight = float;
 }
 
+
 "abstraction = showing only what is necessary"
 "abstraction be different for different objects"
 "car to driver, mechanic"
 "considering only the necessary things"
 "inheritance, data hiding"
-"enacpsulation = abstraction + data-hiding"
+"encapsulation = abstraction + data-hiding"
 "polymorphism -> behaviour of object changes with situation"
 "we behave differently to different people"
 
 "this is a keyword which contains current object reference"
-"call contructor of same class, from another constructor"
+"call constructor of same class, from another constructor"
 "call to this must be the first statement"
 "differentiate instance variables with local variables"
 
@@ -112,6 +163,18 @@ def.+ = {
 "super() is the default statement will be added by the compiler by default for every constructor"
 "super differentiate inherited variables and functions"
 
+"abstract classes + methods"
+"for an abstract class we cannot create an object"
+"examples person, animal, drinkable items"
+"abstract methods must be defined in derived class"
+"DrinkableItem: drinkFlavour() -> Tea, Coffee, ColdDrink"
 
+"interface is an abstract class with all methods abstract"
+"no need to define public or abstract"
+"dynamic type checking during type casting base class obj to derived class obj"
 
-
+"final variables must be initialized before they are used"
+"by default the variables in interface are public static and final"
+"final variables cannot be reassigned"
+"final methods cannot be overridden"
+"final class cannot be inherited"
