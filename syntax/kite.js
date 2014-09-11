@@ -1,49 +1,49 @@
-"required: ability to create unnamed variables and functions"
+"Required Features"
+"================="
+
+"- unnamed values, structures, functions, and objects"
+"- encapsulation, abstraction, data-hiding, inheritance, polymorphism"
+"- continuation, type inference, referential transparency, pattern matching"
+"- higher order polymorphism, abstract data type, generalized algebraic datatype"
+"- minimal, simple, coherent syntax with bunch of built-in functions"
+"- static typing, dynamic typing, higher order functions, closures, tuples"
+"- general purpose, concurrent, garbage collected, functional, eager evaluation, single assignment"
+"- distributed, fault tolerant, soft real-time, hot swapping, self modification, low level code"
+"- flip-flop operator, function-pointer table, remote procedure call, true OO, flow-control"
+"- simple io, named parameters, non-dangling else, lots of built-in datatypes, exception handling"
+
+
+"comment (multi-line)"
+"statements end with ;"
+
+"single variable declaration"
+a = 2;
+"multi variable declaration"
+a & b & c = 3.14;
 
 "variable with understood type"
 a = 2;
-"multiple variable with understood type"
-a & b & c = 3.14;
-
-"variable with explicitly specified type and default data"
+"variable with specified type and default value"
 a = int;
-"multiple variables with explicitly specified type and default data"
-a & b & c = float;
-
-"variable with explicitly specified type"
+"variable with specified type"
 a = int(2);
-"multiple variables with explicitly specified type"
-a & b & c = float(3.14);
+"variable with specified type and uninitialized"
+a = float(?);
 
 "variable with modifiable type and default data"
 a = var;
-"multiple variables with modifiable type and default data"
-a & b & c = var;
-
 "variable with modifiable type"
 a = var(2);
-"multiple variables with modifiable type"
-a & b & c = var(float(3.14));
 
 "variable with bit type and default data"
 a = bit(2);
-"multiple variable with bit type and default data"
-a & b & c = bit(4);
-
 "variable with bit type"
 a = bit(2, 0b11);
-"multiple variable with bit type"
-a & b & c = bit(4, 0b0101);
 
 "constant variable with understood type"
 a := 2;
-"multiple variables with understood type"
-a & b & c := 22/7;
-
-"constant variable with explicitly specified type"
+"constant variable with specified type"
 a := int(2);
-"multiple variables with explicitly specified type"
-a & b & c := float(22/7);
 
 "defining a structure"
 a = {
@@ -66,6 +66,23 @@ a & b & c = {
 	id = int(2);
 	price = var(float(3.14)-);
 }
+
+"writing if"
+(a & b > 20) ? say('greater than 20'); : say('not ready');
+
+"while"
+{
+	(a > 20) ? break;
+}
+
+"getting one value to multiple variables"
+a = b = c = readKey();
+"getting multiple values into multiple variables"
+a & b & c = readKey();
+
+"by value and by reference"
+
+
 
 "if forgot to insert ; this acts as function"
 func = (); {
