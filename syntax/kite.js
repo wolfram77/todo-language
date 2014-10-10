@@ -21,6 +21,9 @@ a = 2;
 "multi variable declaration"
 a & b & c = 3.14;
 
+"yay! i can access it form github"
+"time to write some concepts into it"
+
 "variable with understood type"
 a = 2;
 "variable with specified type and default value"
