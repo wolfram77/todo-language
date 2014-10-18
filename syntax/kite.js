@@ -13,6 +13,10 @@
 "- simple io, named parameters, non-dangling else, lots of built-in datatypes, exception handling"
 
 
+simple interface declaration in machine understood way
+
+
+
 "comment (multi-line)"
 "statements end with ;"
 
