@@ -9,3 +9,12 @@ school cstring := {
 	string a;
 	
 };
+
+"To find the winne+r: Alice vs Bob"
+
+t = in.number
+for 1 to t {
+	n = in.number
+	if n % 2 == 0 then out 'ALICE'
+				  else out 'BOB'
+}
