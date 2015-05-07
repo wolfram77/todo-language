@@ -46,3 +46,32 @@ Renesas RX CPU
 Abstract logic specification is required so that a specified logic can be programmed into any architecture without any modification to the original source code.
 Not only should the logic be abstract but also concurrent in time and space.
 
+Seem to accept files just too much? It was just a thought in someone's mind at a time.
+The point is that we need not accept things as they are.  We should be courageous enough
+to reinvent the wheel. In the process we might get new core ideas that help bring out
+a vast change how we think about the world and live in it.
+
+Think about a file in a computer hard disk, or a mobile, or a smart phone or, ...
+What is it? A piece of information? What does it describe? What does it mean? Is it self sufficient?
+Do information stored in a file have any relation among them? What about relation between multiple files?
+How do we categorize files? Hpw do we identify them?
+
+From what i believe, a file is a meaningless chunk of information with or without a relation to outside files
+and is identified by a single name. It has no associated history as well. Just a chunk of information.
+
+How do we make sense of it? We use programs that are able to interpret a file, and which program to use is obtained from
+the name of the file (extension). Even though files may have relation to each other, as in a game, there is no such relation
+stored in the file, neither are other metadata (author, created date) or file's history.
+
+Due to the absence of any metadata and file logic, a variety of file formats are scattered out making
+it incredibly difficult to reuse a file in some other (after all its some information, why cant we use it elsewhere).
+There are a variety of formats image, text, compression which are difficult to combine. Also it is not possible
+\to reuse a pice of information in a file. it must be duplicated.
+
+lots of ranting, but lets list out the problems related to a file of which there are many.
+file should be like a piece of information, a note, any program should be able to make sense of it. and as notes can
+consist of lot of pages, so can that of a file.. why does it have to be contiguous? why permanent? why is network data
+not a file? why buffer not a file. where do we describe a file.. why we dont use data structures as integral part of file.
+now, they will be...
+
+
